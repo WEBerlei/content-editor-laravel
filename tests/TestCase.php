@@ -14,7 +14,7 @@ class TestCase extends Orchestra
 
         $this->withFactories(__DIR__.'/database/factories');
 
-        Route::contentEditorLaravel( 'content-editor' );
+        Route::contentEditorLaravel('content-editor');
     }
 
     protected function getPackageProviders($app)
@@ -36,8 +36,5 @@ class TestCase extends Orchestra
 
         include_once __DIR__ . '/../database/migrations/create_content_editor_tables.php.stub';
         (new \CreateContentEditorTables())->up();
-
-
-
     }
 }

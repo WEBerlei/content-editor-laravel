@@ -33,13 +33,11 @@ class ContentEditorServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'skeleton');
 
-        Route::macro( 'contentEditorLaravel', function (string $prefix)
-        {
-           Route::prefix($prefix)->group( function() {
-               Route::get( '/', [ContentController::class, 'index']);
-           });
+        Route::macro('contentEditorLaravel', function (string $prefix) {
+            Route::prefix($prefix)->group(function () {
+                Route::get('/', [ContentController::class, 'index']);
+            });
         });
-
     }
 
     public function register()

@@ -3,8 +3,6 @@
 
 namespace WEBerlei\ContentEditorLaravel\Tests\Http\Controllers;
 
-
-use Illuminate\Support\Facades\Route;
 use WEBerlei\ContentEditorLaravel\Tests\TestCase;
 
 class ContentControllerTest extends TestCase
@@ -16,7 +14,7 @@ class ContentControllerTest extends TestCase
 
 
 
-        $this->get( '/content-editor' )
+        $this->get('/content-editor')
             ->assertOk();
     }
 }
