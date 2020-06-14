@@ -1,17 +1,17 @@
 {
-    "name": "spatie/:package_name",
-    "description": ":package_description",
+    "name": "weberlei/content-editor-laravel",
+    "description": "A basic WYSIWYG content editor which allows users to easily design and edit web content in the browser",
     "keywords": [
-        "spatie",
-        ":package_name"
+        "weberlei",
+        "content-editor-laravel"
     ],
-    "homepage": "https://github.com/spatie/:package_name",
+    "homepage": "https://github.com/weberlei/content-editor-laravel",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Oliver Eberlei",
+            "email": "oliver@eberlei.de",
+            "homepage": "https://olivereberlei.com",
             "role": "Developer"
         }
     ],
@@ -27,12 +27,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
+            "WEBerlei\\ContentEditorLaravel\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "WEBerlei\\ContentEditorLaravel\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -47,10 +47,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "WEBerlei\\ContentEditorLaravel\\ContentEditorServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Skeleton": "WEBerlei\\ContentEditorLaravel\\ContentEditorFacade"
             }
         }
     },

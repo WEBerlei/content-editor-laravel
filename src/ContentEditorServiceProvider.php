@@ -1,11 +1,11 @@
 <?php
 
-namespace Spatie\Skeleton;
+namespace WEBerlei\ContentEditorLaravel;
 
 use Illuminate\Support\ServiceProvider;
-use Spatie\Skeleton\Commands\SkeletonCommand;
+use WEBerlei\ContentEditorLaravel\Commands\SkeletonCommand;
 
-class SkeletonServiceProvider extends ServiceProvider
+class ContentEditorServiceProvider extends ServiceProvider
 {
     public function boot()
     {

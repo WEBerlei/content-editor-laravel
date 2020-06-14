@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace WEBerlei\ContentEditorLaravel\Commands;
 
 use Illuminate\Console\Command;
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace Spatie\Skeleton;
+namespace WEBerlei\ContentEditorLaravel;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \Spatie\Skeleton\Skeleton
  */
-class SkeletonFacade extends Facade
+class ContentEditorFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
