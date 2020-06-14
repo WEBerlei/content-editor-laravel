@@ -18,6 +18,6 @@ class ContentTest extends TestCase
 
         //Content::create([]);
 
-        $this->assertDatabaseCount( 'content_editor__content', 1 );
+        $this->assertDatabaseCount( config( 'content-editor.table_prefix' ) . 'contents', 1 );
     }
 }

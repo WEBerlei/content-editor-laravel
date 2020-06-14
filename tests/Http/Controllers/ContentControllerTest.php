@@ -15,7 +15,6 @@ class ContentControllerTest extends TestCase
         $this->withoutExceptionHandling();
 
 
-
         $this->get( '/content-editor' )
             ->assertOk();
     }

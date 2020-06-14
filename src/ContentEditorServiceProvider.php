@@ -13,7 +13,7 @@ class ContentEditorServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/skeleton.php' => config_path('skeleton.php'),
+                __DIR__ . '/../config/content-editor.php' => config_path('content-editor.php'),
             ], 'config');
 
             $this->publishes([
@@ -44,6 +44,6 @@ class ContentEditorServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/skeleton.php', 'skeleton');
+        $this->mergeConfigFrom(__DIR__ . '/../config/content-editor.php', 'content-editor');
     }
 }

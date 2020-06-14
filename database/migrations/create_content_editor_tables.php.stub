@@ -8,7 +8,7 @@ class CreateContentEditorTables extends Migration
 {
     public function up()
     {
-        Schema::create('content_editor__content', function (Blueprint $table) {
+        Schema::create( config( 'content-editor.table_prefix' ) . 'contents', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             // add fields
