@@ -11,4 +11,26 @@ class Content extends Model
     {
         $this->setTable( config( 'content-editor.table_prefix' ) . "contents" );
     }
+
+    public function modules()
+    {
+        return $this->hasMany( Module::class );
+    }
+
+    public function sections()
+    {
+        return $this->hasMany( Section::class )->orderBy( 'order' );
+    }
+
+    public function render()
+    {
+        $output = "";
+
+        foreach( $this->sections as $section )
+        {
+            $output .= $section->render();
+        }
+
+        return $output;
+    }
 }
