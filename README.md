@@ -9,6 +9,16 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 
 ## Installation
 
+Stuff I think that needs to be done:
+1) Install vue scaffolding for laravel ui
+    ```bash
+    php artisan ui vue
+    ```
+2) Add content-editor app.js to application app.js (I'm sure this can be cleaner)
+    ```bash
+    require( './../../vendor/weberlei/content-editor-laravel/dist/js/app')
+    ```
+
 You can install the package via composer:
 
 ```bash
@@ -18,13 +28,13 @@ composer require weberlei/content-editor-laravel
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="WEBerlei\ContentEditorLaravel\ContentEditorServiceProvider" --tag="migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
+php artisan vendor:publish --provider="WEBerlei\ContentEditorLaravel\ContentEditorServiceProvider" --tag="config"
 ```
 
 This is the contents of the published config file:

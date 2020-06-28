@@ -5,12 +5,12 @@ namespace WEBerlei\ContentEditorLaravel;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Spatie\Skeleton\Skeleton
+ * @see \WEBerlei\ContentEditorLaravel\ContentEditor
  */
 class ContentEditorFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'skeleton';
+        return 'content-editor';
     }
 }

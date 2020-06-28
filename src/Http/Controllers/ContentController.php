@@ -7,6 +7,11 @@ class ContentController
 {
     public function index()
     {
-        return response(200);
+        return "ok";
+    }
+
+    public function editor()
+    {
+        return view( 'content-editor::editor' );
     }
 }

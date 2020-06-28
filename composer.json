@@ -49,7 +49,7 @@
                 "WEBerlei\\ContentEditorLaravel\\ContentEditorServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "WEBerlei\\ContentEditorLaravel\\ContentEditorFacade"
+                "ContentEditor": "WEBerlei\\ContentEditorLaravel\\ContentEditorFacade"
             }
         }
     },

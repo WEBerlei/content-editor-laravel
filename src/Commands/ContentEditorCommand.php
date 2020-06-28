@@ -4,9 +4,9 @@ namespace WEBerlei\ContentEditorLaravel\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class ContentEditorCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'content-editor';
 
     public $description = 'My command';
 
