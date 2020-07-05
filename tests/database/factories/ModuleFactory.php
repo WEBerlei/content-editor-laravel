@@ -1,24 +1,24 @@
 <?php
 
 use \Faker\Generator;
-use WEBerlei\ContentEditorLaravel\Models\Module;
-use WEBerlei\ContentEditorLaravel\Models\ModuleImage;
-use WEBerlei\ContentEditorLaravel\Models\ModuleTextarea;
+use WEBerlei\ContentEditorLaravel\Models\Component;
+use WEBerlei\ContentEditorLaravel\Models\ComponentImage;
+use WEBerlei\ContentEditorLaravel\Models\ComponentTextarea;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Module::class, function (Generator $faker) {
+$factory->define(Component::class, function (Generator $faker) {
     return [
 
     ];
 });
 
-$factory->define(ModuleImage::class, function (Generator $faker) {
+$factory->define(ComponentImage::class, function (Generator $faker) {
     return [
 
     ];
 });
 
-$factory->define(ModuleTextarea::class, function (Generator $faker) {
+$factory->define(ComponentTextarea::class, function (Generator $faker) {
     return [
         'text' => 'Ahoi from Textarea',
     ];

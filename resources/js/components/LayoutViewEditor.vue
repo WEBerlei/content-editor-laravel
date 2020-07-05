@@ -1,5 +1,5 @@
 <template>
-    <div class="editor">
+    <div id="content-editor" class="content-editor">
         <div id="module-dropzone" class="module-dropzone">
         </div>
     </div>
@@ -10,11 +10,14 @@
         props: {},
         data: () => ({}),
         computed: {},
+        mounted() {
+
+        }
     };
 </script>
 
 <style scoped>
-    .editor {
+    .content-editor {
         background-color: #fe8a71;
         flex-grow: 1;
         padding: 0 1em;

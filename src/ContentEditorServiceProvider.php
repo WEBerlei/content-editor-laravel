@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use WEBerlei\ContentEditorLaravel\Commands\ContentEditorCommand;
 use WEBerlei\ContentEditorLaravel\Commands\SkeletonCommand;
+use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentEditorController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\ContentController;
 
 class ContentEditorServiceProvider extends ServiceProvider
@@ -20,6 +21,10 @@ class ContentEditorServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/content-editor'),
             ], 'views');
+
+            $this->publishes([
+                __DIR__.'/../resources/images' => public_path('images'),
+            ], 'public');
 
             $this->publishes([
                 __DIR__ . '/../resources/js' => resource_path('js/vendor/content-editor')
@@ -42,6 +47,10 @@ class ContentEditorServiceProvider extends ServiceProvider
             Route::prefix($prefix)->group(function () {
                 Route::get('/', [ContentController::class, 'index']);
                 Route::get('/editor', [ContentController::class, 'editor']);
+            });
+
+            Route::prefix($prefix . '/api')->group(function () {
+                Route::get('/component-editor/get', [ComponentEditorController::class, 'getEditor']);
             });
         });
     }

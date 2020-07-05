@@ -23,7 +23,7 @@ class Section extends Model implements Sortable
 
     public function modules()
     {
-        return $this->hasMany( Module::class )->orderBy( 'order' );
+        return $this->hasMany( Component::class )->orderBy( 'order' );
     }
 
     public function render()

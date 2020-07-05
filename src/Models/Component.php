@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
-class Module extends Model implements Sortable
+class Component extends Model implements Sortable
 {
     use SortableTrait;
 
     public function __construct(array $attributes = [])
     {
-        $this->setTable( config( 'content-editor.table_prefix' ) . "modules" );
+        $this->setTable( config( 'content-editor.table_prefix' ) . "components" );
     }
 
-    public function setContentModule( ModuleBase $module )
+    public function setContentModule(ComponentBase $module )
     {
         $this->renderable()->associate( $module )->save();
     }

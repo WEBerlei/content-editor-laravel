@@ -20,7 +20,7 @@ class CreateContentEditorTables extends Migration
             $table->unsignedInteger( 'order_column' )->default( 0 );
         });
 
-        Schema::create( config( 'content-editor.table_prefix' ) . 'modules', function (Blueprint $table) {
+        Schema::create( config( 'content-editor.table_prefix' ) . 'components', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedInteger( 'content_id' )->nullable();
@@ -31,13 +31,13 @@ class CreateContentEditorTables extends Migration
             $table->string( 'renderable_type' )->nullable();
         });
 
-        Schema::create( config( 'content-editor.table_prefix' ) . 'module_images', function (Blueprint $table) {
+        Schema::create( config( 'content-editor.table_prefix' ) . 'component_images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string( 'path' )->nullable();
         });
 
-        Schema::create( config( 'content-editor.table_prefix' ) . 'module_textareas', function (Blueprint $table) {
+        Schema::create( config( 'content-editor.table_prefix' ) . 'component_textareas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text( 'text' )->nullable();
