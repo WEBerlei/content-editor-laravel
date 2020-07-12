@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use WEBerlei\ContentEditorLaravel\Commands\ContentEditorCommand;
 use WEBerlei\ContentEditorLaravel\Commands\SkeletonCommand;
-use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentEditorController;
+use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentApiController;
+use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentEditorApiController;
+use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ContentApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\ContentController;
 
 class ContentEditorServiceProvider extends ServiceProvider
@@ -45,12 +47,19 @@ class ContentEditorServiceProvider extends ServiceProvider
 
         Route::macro('contentEditorLaravel', function (string $prefix) {
             Route::prefix($prefix)->group(function () {
-                Route::get('/', [ContentController::class, 'index']);
-                Route::get('/editor', [ContentController::class, 'editor']);
+                Route::get('{content}', [ContentController::class, 'index']);
+                Route::get('{content_id}/edit', [ContentController::class, 'edit']);
             });
 
             Route::prefix($prefix . '/api')->group(function () {
-                Route::get('/component-editor/get', [ComponentEditorController::class, 'getEditor']);
+                Route::get('/content/{content_id}', [ContentApiController::class, 'get']);
+                Route::get('/content/{content_id}/render', [ContentApiController::class, 'render']);
+                Route::post('/content/{content_id}/store', [ContentApiController::class, 'store']);
+
+                Route::get('/components', [ComponentApiController::class, 'getComponents']);
+
+                Route::post('/component-editor', [ComponentEditorApiController::class, 'getEditor']);
+                Route::post('/component-editor/save', [ComponentEditorApiController::class, 'saveEditorData']);
             });
         });
     }

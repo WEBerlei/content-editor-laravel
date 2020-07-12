@@ -21,7 +21,7 @@ class ModuleTest extends TestCase
         /** @var Component $module */
         $module = factory(Component::class)->create();
 
-        $module->setContentModule( $image );
+        $module->setContentComponent( $image );
 
         $this->assertEquals( "<img src='$image->path'>", $module->render() );
     }
@@ -36,7 +36,7 @@ class ModuleTest extends TestCase
         /** @var Component $module */
         $module = factory(Component::class)->create();
 
-        $module->setContentModule( $textarea );
+        $module->setContentComponent( $textarea );
 
         $this->assertEquals( "Hi from Textarea", $module->render() );
     }

@@ -12,14 +12,14 @@ class Content extends Model
         $this->setTable( config( 'content-editor.table_prefix' ) . "contents" );
     }
 
-    public function modules()
+    public function components()
     {
         return $this->hasMany( Component::class );
     }
 
     public function sections()
     {
-        return $this->hasMany( Section::class )->orderBy( 'order' );
+        return $this->hasMany( Section::class )->orderBy( 'order_column' );
     }
 
     public function render()

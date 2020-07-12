@@ -4,6 +4,7 @@
 namespace WEBerlei\ContentEditorLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
@@ -16,9 +17,9 @@ class Component extends Model implements Sortable
         $this->setTable( config( 'content-editor.table_prefix' ) . "components" );
     }
 
-    public function setContentModule(ComponentBase $module )
+    public function setContentComponent( ComponentBase $component )
     {
-        $this->renderable()->associate( $module )->save();
+        $this->renderable()->associate( $component )->save();
     }
 
     public function content()
@@ -40,10 +41,30 @@ class Component extends Model implements Sortable
     {
         if( $this->renderable == null )
         {
-            return 'No content module loaded';
+            throw new \Exception( 'No content module loaded' );
         }
 
         return $this->renderable->render();
+    }
+
+    public function renderEditor()
+    {
+        if( $this->renderable == null )
+        {
+            throw new \Exception( 'No content module loaded' );
+        }
+
+        return $this->renderable->renderEditor();
+    }
+
+    public function verify( Request $request )
+    {
+        if( $this->renderable == null )
+        {
+            throw new \Exception( 'No content module loaded' );
+        }
+
+        return $this->renderable->verify( $request );
     }
 
     public function buildSortQuery()

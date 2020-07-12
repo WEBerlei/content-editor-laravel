@@ -1,14 +1,19 @@
 <template>
     <div id="content-editor" class="content-editor">
-        <div id="module-dropzone" class="module-dropzone">
-        </div>
+        <content-editor-section v-for="section in content.sections" v-bind:key="section.id" :section="section"></content-editor-section>
+        <content-editor-section></content-editor-section>
     </div>
 </template>
 
 <script>
     export default {
-        props: {},
-        data: () => ({}),
+        props: {
+            content: null,
+            components: null,
+        },
+        data: () => ({
+
+        }),
         computed: {},
         mounted() {
 
@@ -23,15 +28,5 @@
         padding: 0 1em;
     }
 
-    .module-dropzone {
-        width: 100%;
-        border: 5px dashed #3da4ab;
-        min-height: 150px;
-        border-radius: 0.25em;
-        display: flex;
-        flex-direction: row;
-
-        margin: 1em 0;
-    }
 
 </style>

@@ -1,22 +1,25 @@
 <template>
-    <div class="module-editor">
+    <form id="component-editor-form" v-html="content">
         <p class="loading" v-if="loading">Loading...</p>
-        {{content}}
-    </div>
+    </form>
 </template>
 
 <script>
-    import ModuleEditorsApi from '../services/ComponentEditors'
+    import ComponentEditorsApi from '../services/ComponentsApi'
 
     export default {
-        props: {},
+        props: {
+            componentId: null,
+            componentClass: null,
+
+        },
         data: () => ({
             content: "",
             loading: true,
         }),
         computed: {},
         mounted() {
-            ModuleEditorsApi.getEditor().then(output => {
+            ComponentEditorsApi.getEditor( this.componentId, this.componentClass ).then(output => {
                 this.content = output;
             })
             .catch(error => {

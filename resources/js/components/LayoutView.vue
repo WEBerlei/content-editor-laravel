@@ -1,8 +1,8 @@
 <template>
     <div class="layout-view">
         <layout-view-modal ref="moduleModal"></layout-view-modal>
-        <layout-view-editor></layout-view-editor>
-        <layout-view-modules></layout-view-modules>
+        <layout-view-editor :content="content" :components="components"></layout-view-editor>
+        <layout-view-components :components="components"></layout-view-components>
 
     </div>
 </template>
@@ -15,18 +15,21 @@
         components: {
             'layout-view-modal': LayoutViewModal
         },
-        props: {},
+        props: {
+            content: null,
+            components: null,
+        },
         data: () => ({ }),
         computed: {},
         methods: {
             makeDropzone(el) {
                 return Sortable.create(el, {
                     group: {
-                        name: "modules",
+                        name: "components",
                     },
                     onAdd: function (/**Event*/evt) {
                         evt.item.ondblclick = function( event ) {
-                            window.contentEditorLayout.$refs.moduleModal.open();
+                            window.contentEditorLayout.$refs.moduleModal.open( evt.item, this.getAttribute( 'component-id'), this.getAttribute( 'component-class') );
                         };
 
                         if( window.contentEditorLayout.isLastSectionEmpty() == false ) {
@@ -37,9 +40,13 @@
                             window.contentEditorLayout.makeDropzone(newClone);
                         }
                     },
+                    onSort: function() {
+                        window.contentEditor.save();
+                    },
                     onRemove: function() {
                         window.contentEditorLayout.trimSections();
                     },
+
                     fallbackOnBody: true,
                     animation: 150,
                 });
@@ -57,9 +64,9 @@
             }
         },
         mounted() {
-            var sortable = Sortable.create(document.getElementById('modules-list'), {
+            var sortable = Sortable.create(document.getElementById('components-list'), {
                 group: {
-                    name: "modules",
+                    name: "components",
                     pull: 'clone',
                     put: false,
                 },
@@ -67,11 +74,9 @@
                 animation: 150,
             });
 
-            var dropzone = this.makeDropzone( document.getElementById('module-dropzone') );
-
-            var trash = Sortable.create(document.getElementById('module-trash'), {
+            var trash = Sortable.create(document.getElementById('component-trash'), {
                 group: {
-                    name: "modules",
+                    name: "components",
                     pull: false,
                 },
                 onAdd: function (/**Event*/evt) {

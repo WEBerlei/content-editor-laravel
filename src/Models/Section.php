@@ -21,21 +21,21 @@ class Section extends Model implements Sortable
         return $this->belongsTo( Content::class );
     }
 
-    public function modules()
+    public function components()
     {
-        return $this->hasMany( Component::class )->orderBy( 'order' );
+        return $this->hasMany( Component::class )->orderBy( 'order_column' );
     }
 
     public function render()
     {
-        $output = "";
+        $v[ 'content' ] = "";
 
-        foreach( $this->modules as $module )
+        foreach( $this->components as $component )
         {
-            $output .= $module->render();
+            $v[ 'content' ] .= $component->render();
         }
 
-        return $output;
+        return view( 'content-editor::output.section', $v )->render();;
     }
 
     public function buildSortQuery()
