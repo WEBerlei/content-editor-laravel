@@ -1997,7 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__["default"].get(this.id).then(function (output) {
+      _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__["default"].get(this.contentId).then(function (output) {
         _this.content = output;
       })["catch"](function (error) {
         console.log(error);
@@ -2040,7 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
       } //console.log( output );
 
 
-      _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__["default"].store(this.content.id, {
+      _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__["default"].store(this.contentId, {
         sections: output
       }).then(function (output) {
         _this2.content = output; //console.trace( this.content );
@@ -2636,7 +2636,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.svg-icon {\n    width: 3em;\n    height: 3em;\n}\n.svg-icon path,\n.svg-icon polygon,\n.svg-icon rect {\n    fill: #ffffff;\n}\n.svg-icon circle {\n    stroke: #ffffff;\n    stroke-width: 1;\n}\n", ""]);
+exports.push([module.i, "\n.svg-icon {\n    width: 3em;\n    height: 3em;\n    display: inline;\n}\n.svg-icon path,\n.svg-icon polygon,\n.svg-icon rect {\n    fill: #ffffff;\n}\n.svg-icon circle {\n    stroke: #ffffff;\n    stroke-width: 1;\n}\n", ""]);
 
 // exports
 

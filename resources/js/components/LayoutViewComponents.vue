@@ -29,6 +29,7 @@
     .svg-icon {
         width: 3em;
         height: 3em;
+        display: inline;
     }
 
     .svg-icon path,

@@ -47,7 +47,7 @@
     .component-icon {
         text-align: center;
     }
-    
+
     .content-editor-component {
         background-color: #3da4ab;
         color: #fff;

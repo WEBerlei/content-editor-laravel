@@ -38,7 +38,7 @@
             },
             loadLayout: function() {
                 this.loading = true;
-                ContentApi.get( this.id ).then(output => {
+                ContentApi.get( this.contentId ).then(output => {
                     this.content = output;
                 })
                     .catch(error => {
@@ -81,7 +81,7 @@
 
                 //console.log( output );
 
-                ContentApi.store( this.content.id, { sections: output } )
+                ContentApi.store( this.contentId, { sections: output } )
                     .then( output => {
                         this.content = output;
                         //console.trace( this.content );
