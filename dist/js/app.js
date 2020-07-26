@@ -2560,7 +2560,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.content-editor-component[data-v-3d906d02] {\n    background-color: #3da4ab;\n    color: #fff;\n    padding: 15px;\n    margin: 1em;\n    border-radius: 0.25em;\n    text-align: center;\n    cursor: grab;\n    min-width: 120px;\n    flex-grow: 1;\n}\n.content-editor-component[data-v-3d906d02]:hover {\n    box-shadow: 0 0 0pt 4pt #0e9aa7;\n}\n.content-editor-component span[data-v-3d906d02] {\n    display: block;\n    font-family: sans-serif;\n    margin-top: 1em;\n}\n", ""]);
+exports.push([module.i, "\n.component-icon[data-v-3d906d02] {\n    text-align: center;\n}\n.content-editor-component[data-v-3d906d02] {\n    background-color: #3da4ab;\n    color: #fff;\n    padding: 15px;\n    margin: 1em;\n    border-radius: 0.25em;\n    text-align: center;\n    cursor: grab;\n    min-width: 120px;\n    flex-grow: 1;\n}\n.content-editor-component[data-v-3d906d02]:hover {\n    box-shadow: 0 0 0pt 4pt #0e9aa7;\n}\n.content-editor-component span[data-v-3d906d02] {\n    display: block;\n    font-family: sans-serif;\n    margin-top: 1em;\n}\n", ""]);
 
 // exports
 
@@ -7690,7 +7690,10 @@ var render = function() {
       on: { dblclick: _vm.onDoubleClick }
     },
     [
-      _c("div", { domProps: { innerHTML: _vm._s(_vm.component.vue_icon) } }),
+      _c("div", {
+        staticClass: "component-icon",
+        domProps: { innerHTML: _vm._s(_vm.component.vue_icon) }
+      }),
       _vm._v(" "),
       _c("span", { staticClass: "preview" }, [
         _vm._v(_vm._s(_vm.component.vue_name))

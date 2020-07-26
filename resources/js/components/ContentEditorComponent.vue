@@ -1,6 +1,6 @@
 <template>
     <div class="content-editor-component" ref="editorComponent" :component-id="component.vue_id" :component-class="component.vue_class" @dblclick="onDoubleClick">
-        <div v-html="component.vue_icon"></div>
+        <div class="component-icon" v-html="component.vue_icon"></div>
         <span class="preview">{{component.vue_name}}</span>
     </div>
 </template>
@@ -44,6 +44,10 @@
 </style>
 
 <style scoped>
+    .component-icon {
+        text-align: center;
+    }
+    
     .content-editor-component {
         background-color: #3da4ab;
         color: #fff;
