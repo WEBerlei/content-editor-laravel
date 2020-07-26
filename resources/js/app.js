@@ -14,7 +14,7 @@ import ContentEditorSection from './components/ContentEditorSection';
 
 import axios from 'axios'
 
-axios.defaults.baseURL = 'https://foodhub.test/content-editor/api'
+axios.defaults.baseURL = '/content-editor/api'
 
 Vue.component('content-editor', ContentEditor);
 Vue.component('data-view', DataView);
