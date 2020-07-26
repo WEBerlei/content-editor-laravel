@@ -37,16 +37,31 @@ class ComponentImage extends ComponentBase
 
     protected function doRenderEditor()
     {
-        return "ModuleImageEditor";
+        $v[ 'component' ] = $this;
+
+        return view( 'content-editor::editors.image', $v )->render();
     }
 
     public function getComponentPreview()
     {
+        if( empty( $this->path ) )
+        {
+            return "Image";
+        }
+
         return $this->path;
     }
 
     protected function doVerify(Request $request)
     {
-        return $this->returnFailedVerify( [] );
+        if( $request->has( 'data_path' ) == false )
+        {
+            return $this->returnFailedVerify( [ 'data_path' ] );
+        }
+
+        $this->path = $request->input( 'data_path' );
+        $this->save();
+
+        return $this->returnSuccessfulVerify();
     }
 }

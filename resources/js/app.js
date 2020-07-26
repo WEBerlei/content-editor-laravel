@@ -1,6 +1,7 @@
 //content-editor-laravel app.js
 
 import ContentEditor from './components/ContentEditor.vue';
+import DataView from './components/DataView';
 import PreviewView from './components/PreviewView';
 import LayoutView from './components/LayoutView';
 import LayoutViewComponents from './components/LayoutViewComponents';
@@ -16,6 +17,7 @@ import axios from 'axios'
 axios.defaults.baseURL = 'https://foodhub.test/content-editor/api'
 
 Vue.component('content-editor', ContentEditor);
+Vue.component('data-view', DataView);
 Vue.component('preview-view', PreviewView);
 Vue.component('layout-view', LayoutView);
 Vue.component('layout-view-components', LayoutViewComponents);

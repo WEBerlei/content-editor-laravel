@@ -2,8 +2,9 @@
     <div>
         <a href="#" @click="showLayout" class="content-editor-button">Layout</a>
         <a href="#" @click="showPreview" class="content-editor-button">Preview</a>
-        <layout-view :content="content" :components="components" v-if="!loading && isShowingLayout"></layout-view>
-        <preview-view :content="content" v-if="!loading && !isShowingLayout"></preview-view>
+        <layout-view :content="content" :components="components" v-if="!loading && displayMode === 0"></layout-view>
+        <preview-view :content="content" v-if="!loading && displayMode === 1"></preview-view>
+        <!--<data-view :content="content" v-if="!loading && displayMode === 2"></data-view>-->
 
     </div>
 </template>
@@ -20,15 +21,18 @@
             content: null,
             components: null,
             loading: true,
-            isShowingLayout: true,
+            displayMode: 0,
         }),
         methods: {
+            showData: function() {
+                this.displayMode = 2;
+            },
             showLayout: function() {
                 this.loadLayout();
-                this.isShowingLayout = true;
+                this.displayMode = 0;
             },
             showPreview: function() {
-                this.isShowingLayout = false;
+                this.displayMode = 1;
             },
             loadLayout: function() {
                 this.loading = true;

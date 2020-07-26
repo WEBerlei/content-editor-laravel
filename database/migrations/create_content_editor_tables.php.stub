@@ -37,11 +37,22 @@ class CreateContentEditorTables extends Migration
             $table->string( 'path' )->nullable();
         });
 
+        Schema::create( config( 'content-editor.table_prefix' ) . 'component_files', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+            $table->string( 'path' )->nullable();
+        });
+
         Schema::create( config( 'content-editor.table_prefix' ) . 'component_textareas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text( 'text' )->nullable();
         });
 
+        Schema::create( config( 'content-editor.table_prefix' ) . 'component_entities', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+            $table->unsignedInteger( 'entity_id' )->default( 0 );
+        });
     }
 }

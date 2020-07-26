@@ -33,9 +33,13 @@
     .component-editor > label {
         display: block;
         text-align: left;
+        font-size: 0.75em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
     }
-    .component-editor > textarea {
+    .component-editor > textarea, .component-editor > input {
         width: 100%;
+        padding: 0.5em;
     }
 </style>
 

@@ -1,0 +1,26 @@
+composer.json
+"require": {
+        [...]
+        "weberlei/content-editor-laravel": "dev-master"
+    },
+
+
+
+"repositories": [
+        [...]
+        {
+            "type": "path",
+            "url": "../content-editor-laravel"
+        }
+    ]
+
+
+package.json
+
+
+
+web.php
+Route::contentEditorLaravel( 'content-editor' );
+
+
+resources/js/app.js
