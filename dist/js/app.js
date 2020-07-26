@@ -1966,6 +1966,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7589,6 +7590,11 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("input", {
+        attrs: { type: "hidden", name: "content_id" },
+        domProps: { value: _vm.id }
+      }),
+      _vm._v(" "),
       _c(
         "a",
         {
@@ -8149,7 +8155,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-axios__WEBPACK_IMPORTED_MODULE_10___default.a.defaults.baseURL = 'https://foodhub.test/content-editor/api';
+axios__WEBPACK_IMPORTED_MODULE_10___default.a.defaults.baseURL = '/content-editor/api';
 Vue.component('content-editor', _components_ContentEditor_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.component('data-view', _components_DataView__WEBPACK_IMPORTED_MODULE_1__["default"]);
 Vue.component('preview-view', _components_PreviewView__WEBPACK_IMPORTED_MODULE_2__["default"]);
