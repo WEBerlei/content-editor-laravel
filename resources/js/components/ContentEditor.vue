@@ -1,8 +1,8 @@
 <template>
     <div>
         <input type="hidden" name="content_id" :value="contentId" />
-        <a href="#" @click="showLayout" class="content-editor-button">Layout</a>
-        <a href="#" @click="showPreview" class="content-editor-button">Preview</a>
+        <a href="#" @click.prevent="showLayout" class="content-editor-button">Layout</a>
+        <a href="#" @click.prevent="showPreview" class="content-editor-button">Preview</a>
         <layout-view :content="content" :components="components" v-if="!loading && displayMode === 0"></layout-view>
         <preview-view :content="content" v-if="!loading && displayMode === 1"></preview-view>
         <!--<data-view :content="content" v-if="!loading && displayMode === 2"></data-view>-->

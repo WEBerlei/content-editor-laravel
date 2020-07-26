@@ -7618,7 +7618,12 @@ var render = function() {
         {
           staticClass: "content-editor-button",
           attrs: { href: "#" },
-          on: { click: _vm.showLayout }
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.showLayout($event)
+            }
+          }
         },
         [_vm._v("Layout")]
       ),
@@ -7628,7 +7633,12 @@ var render = function() {
         {
           staticClass: "content-editor-button",
           attrs: { href: "#" },
-          on: { click: _vm.showPreview }
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.showPreview($event)
+            }
+          }
         },
         [_vm._v("Preview")]
       ),
@@ -7921,6 +7931,7 @@ var render = function() {
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
+                    $event.preventDefault()
                     return _vm.save()
                   }
                 }
@@ -7982,6 +7993,7 @@ var render = function() {
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
+                    $event.preventDefault()
                     return _vm.cancel()
                   }
                 }
