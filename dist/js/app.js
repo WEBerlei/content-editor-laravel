@@ -1978,6 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
       content: null,
       components: null,
       loading: true,
+      saving: false,
       displayMode: 0
     };
   },
@@ -2005,6 +2006,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     save: function save() {
+      var _this2 = this;
+
+      if (this.saving == true) {
+        return;
+      }
+
+      this.saving = true;
       var sections = document.getElementsByClassName('content-editor-section');
       var output = [];
 
@@ -2029,23 +2037,42 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         output.push(newSection);
-      }
+      } //console.log( output );
+
 
       _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__["default"].store(this.content.id, {
         sections: output
       }).then(function (output) {
-        console.log(output);
+        _this2.content = output; //console.trace( this.content );
+
+        var tempComponents = document.getElementsByClassName('content-editor-component');
+
+        for (var _i = 0; _i < tempComponents.length; _i++) {
+          if (tempComponents[_i].getAttribute('newly-created') === "true") {
+            tempComponents[_i].parentNode.removeChild(tempComponents[_i]);
+          }
+        }
       })["catch"](function (error) {
         console.log(error);
-      })["finally"](function () {});
+      })["finally"](function () {
+        _this2.saving = false;
+      });
     }
   },
-  computed: {},
+  computed: {
+    contentId: function contentId() {
+      if (this.content == null) {
+        return this.id;
+      }
+
+      return this.content.id;
+    }
+  },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
     _services_ComponentsApi__WEBPACK_IMPORTED_MODULE_1__["default"].getComponents().then(function (output) {
-      _this2.components = output;
+      _this3.components = output;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -2230,33 +2257,24 @@ __webpack_require__.r(__webpack_exports__);
         onAdd: function onAdd(
         /**Event*/
         evt) {
+          //if( evt.item.getAttribute( "component-id" ) == "0" ) {
+          evt.item.setAttribute("newly-created", "true"); //}
+          //console.log( evt.to.getAttribute( "section-id" ) + " - " + evt.from.getAttribute( "section-id" ) );
+
           evt.item.ondblclick = function (event) {
             window.contentEditorLayout.$refs.moduleModal.open(evt.item, this.getAttribute('component-id'), this.getAttribute('component-class'));
           };
-
-          if (window.contentEditorLayout.isLastSectionEmpty() == false) {
-            var newClone = evt.to.cloneNode();
-            evt.to.parentElement.appendChild(newClone);
-            window.contentEditorLayout.makeDropzone(newClone);
-          }
         },
         onSort: function onSort() {
           window.contentEditor.save();
         },
-        onRemove: function onRemove() {
-          window.contentEditorLayout.trimSections();
-        },
+        onRemove: function onRemove() {},
         fallbackOnBody: true,
         animation: 150
       });
     },
     isLastSectionEmpty: function isLastSectionEmpty() {
       return document.getElementById('content-editor').lastElementChild.childElementCount == 0;
-    },
-    trimSections: function trimSections() {
-      while (document.getElementById('content-editor').childElementCount > 1 && this.isLastSectionEmpty() == true && document.getElementById('content-editor').lastElementChild.previousElementSibling.childElementCount == 0) {
-        document.getElementById('content-editor').lastElementChild.remove();
-      }
     }
   },
   mounted: function mounted() {
@@ -7592,7 +7610,7 @@ var render = function() {
     [
       _c("input", {
         attrs: { type: "hidden", name: "content_id" },
-        domProps: { value: _vm.id }
+        domProps: { value: _vm.contentId }
       }),
       _vm._v(" "),
       _c(

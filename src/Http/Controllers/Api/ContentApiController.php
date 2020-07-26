@@ -35,6 +35,7 @@ class ContentApiController
 
     public function store( Request $request, $content_id )
     {
+        /** @var Content $content */
         $content = Content::with( [ 'components', 'sections.components' ] )->firstOrCreate( [ 'id' => $content_id ] );
 
         $sections = $request->input( 'sections' );
@@ -65,13 +66,17 @@ class ContentApiController
 
                 if( $componentData[ "id" ] == 0 )
                 {
-                    $component = new Component();
-                    $component->save();
-
                     $renderable = new $componentData[ "class" ]();
-                    $renderable->save();
 
-                    $component->setContentComponent( $renderable );
+                    if( $renderable != null )
+                    {
+                        $component = new Component();
+                        $component->save();
+
+                        $renderable->save();
+
+                        $component->setContentComponent($renderable);
+                    }
                 }
                 else
                 {
@@ -91,6 +96,7 @@ class ContentApiController
 
         Section::setNewOrder( $sectionOrder );
 
+
         /** @var Component $component */
         foreach( $content->components as $component )
         {
@@ -100,6 +106,15 @@ class ContentApiController
             }
         }
 
-        return $sections;
+        /** @var Section $section */
+        foreach( $content->sections as $section )
+        {
+            if( $section->components()->count() == 0 )
+            {
+                $section->delete();
+            }
+        }
+
+        return $this->get( $content_id );
     }
 }

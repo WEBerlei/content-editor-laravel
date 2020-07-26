@@ -1,10 +1,9 @@
 composer.json
+------------------------
 "require": {
         [...]
         "weberlei/content-editor-laravel": "dev-master"
     },
-
-
 
 "repositories": [
         [...]
@@ -16,11 +15,22 @@ composer.json
 
 
 package.json
-
+------------------------
 
 
 web.php
+------------------------
+
 Route::contentEditorLaravel( 'content-editor' );
 
 
 resources/js/app.js
+------------------------
+
+window.Vue = require('vue');
+
+require( './../../vendor/weberlei/content-editor-laravel/dist/js/app');
+
+const app = new Vue({
+    el: '#app',
+});

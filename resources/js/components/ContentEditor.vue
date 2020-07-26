@@ -1,5 +1,6 @@
 <template>
     <div>
+        <input type="hidden" name="content_id" :value="contentId" />
         <a href="#" @click="showLayout" class="content-editor-button">Layout</a>
         <a href="#" @click="showPreview" class="content-editor-button">Preview</a>
         <layout-view :content="content" :components="components" v-if="!loading && displayMode === 0"></layout-view>
@@ -21,6 +22,7 @@
             content: null,
             components: null,
             loading: true,
+            saving: false,
             displayMode: 0,
         }),
         methods: {
@@ -47,6 +49,11 @@
                     });
             },
             save: function() {
+                if( this.saving == true )  {
+                    return;
+                }
+
+                this.saving = true;
                 let sections = document.getElementsByClassName( 'content-editor-section' );
                 let output = [];
                 for (let i = 0; i < sections.length; i++) {
@@ -72,19 +79,37 @@
                     output.push(newSection);
                 }
 
+                //console.log( output );
+
                 ContentApi.store( this.content.id, { sections: output } )
                     .then( output => {
-                        console.log( output );
+                        this.content = output;
+                        //console.trace( this.content );
+                        var tempComponents = document.getElementsByClassName('content-editor-component');
+                        for (let i = 0; i < tempComponents.length; i++) {
+                            if( tempComponents[i].getAttribute('newly-created') === "true" ) {
+                                tempComponents[i].parentNode.removeChild(tempComponents[i]);
+                            }
+                        }
+
                     })
                     .catch(error => {
                         console.log( error );
                     })
                     .finally(() => {
-
+                        this.saving = false;
                     })
             }
         },
-        computed: {},
+        computed: {
+            contentId: function() {
+                if( this.content == null ) {
+                    return this.id;
+                }
+
+                return this.content.id;
+            }
+        },
         mounted() {
             ComponentsApi.getComponents().then(output => {
                 this.components = output;
