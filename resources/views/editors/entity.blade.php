@@ -1,4 +1,4 @@
 <div class="component-editor">
-    <label for="data_entity_id">Entity Id</label>
-    <input type="text" id="data_entity_id" class="content-editor-input" name="data_entity_id" value="{{ $component->entity_id }}" />
+    <label for="{{ $name }}">Entity Id</label>
+    <input type="text" id="{{ $name }}" class="content-editor-input" name="{{ $name }}" value="{{ $component->entity_id }}" />
 </div>

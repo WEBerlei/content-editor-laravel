@@ -21,9 +21,15 @@
     };
 </script>
 
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .content-editor
+        background-color: $content-editor-layout-background
+</style>
+
 <style scoped>
     .content-editor {
-        background-color: #fe8a71;
         flex-grow: 1;
         padding: 0 1em;
     }

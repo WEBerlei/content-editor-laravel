@@ -19,7 +19,7 @@ class ComponentEditorApiController
         {
             $componentClass = $request->input( 'componentClass' );
 
-            return ( new $componentClass() )->renderEditor();
+            $component = new $componentClass();
         }
 
         return $component->renderEditor();

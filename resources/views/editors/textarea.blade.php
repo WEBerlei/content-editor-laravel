@@ -1,4 +1,4 @@
 <div class="component-editor">
-    <label for="data_text">Text</label>
-    <textarea id="data_text" class="content-editor-input" rows="4" name="data_text">{{ $component->text }}</textarea>
+    <label for="{{ $name }}">Text</label>
+    <textarea id="{{ $name }}" class="content-editor-input" rows="4" name="{{ $name }}">{{ $component->text }}</textarea>
 </div>

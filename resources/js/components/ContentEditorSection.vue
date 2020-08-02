@@ -40,10 +40,16 @@
     };
 </script>
 
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .content-editor-section
+        border: 5px dashed $content-editor-component-color
+</style>
+
 <style scoped>
     .content-editor-section {
         width: 100%;
-        border: 5px dashed #3da4ab;
         min-height: 150px;
         border-radius: 0.25em;
         display: flex;

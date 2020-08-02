@@ -9,12 +9,8 @@ use Illuminate\Http\Request;
 class ComponentFile extends ComponentBase
 {
     protected static $name = 'File';
-    protected static $icon = '<svg class="svg-icon" viewBox="0 0 20 20">
-							<path fill="none" d="M17.206,5.45l0.271-0.27l-4.275-4.274l-0.27,0.269V0.9H3.263c-0.314,0-0.569,0.255-0.569,0.569v17.062
-								c0,0.314,0.255,0.568,0.569,0.568h13.649c0.313,0,0.569-0.254,0.569-0.568V5.45H17.206z M12.932,2.302L16.08,5.45h-3.148V2.302z
-								 M16.344,17.394c0,0.314-0.254,0.569-0.568,0.569H4.4c-0.314,0-0.568-0.255-0.568-0.569V2.606c0-0.314,0.254-0.568,0.568-0.568
-								h7.394v4.55h4.55V17.394z"></path>
-						</svg>';
+    protected static $icon = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z"/> <path d="M14 3v4a1 1 0 0 0 1 1h4" /> <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /> <line x1="12" y1="11" x2="12" y2="17" /> <polyline points="9 14 12 17 15 14" /> </svg>';
+    protected static $field = 'path';
 
     public function __construct(array $attributes = [])
     {
@@ -33,7 +29,7 @@ class ComponentFile extends ComponentBase
 
     protected function doRenderEditor()
     {
-        $v[ 'component' ] = $this;
+        $v = $this->getEditorVariables();
 
         return view( 'content-editor::editors.file', $v )->render();
     }
@@ -46,18 +42,5 @@ class ComponentFile extends ComponentBase
         }
 
         return $this->path;
-    }
-
-    protected function doVerify(Request $request)
-    {
-        if( $request->has( 'data_path' ) == false )
-        {
-            return $this->returnFailedVerify( [ 'data_path' ] );
-        }
-
-        $this->path = $request->input( 'data_path' );
-        $this->save();
-
-        return $this->returnSuccessfulVerify();
     }
 }

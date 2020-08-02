@@ -1,12 +1,18 @@
 <template>
-    <div>
+    <div class="content-editor-main">
         <input type="hidden" name="content_id" :value="contentId" />
+
+        <div class="content-editor-toolbar">
+        <a href="#" @click.prevent="showData" class="content-editor-button">Data</a>
         <a href="#" @click.prevent="showLayout" class="content-editor-button">Layout</a>
         <a href="#" @click.prevent="showPreview" class="content-editor-button">Preview</a>
-        <layout-view :content="content" :components="components" v-if="!loading && displayMode === 0"></layout-view>
-        <preview-view :content="content" v-if="!loading && displayMode === 1"></preview-view>
-        <!--<data-view :content="content" v-if="!loading && displayMode === 2"></data-view>-->
+        </div>
 
+        <div class="content-editor-views">
+        <layout-view :content="content" :components="components" v-if="!loading && currentMode === 'layout'"></layout-view>
+        <preview-view :content="content" v-if="!loading && currentMode === 'preview'"></preview-view>
+        <data-view :content="content" v-if="!loading && currentMode === 'data'"></data-view>
+        </div>
     </div>
 </template>
 
@@ -16,25 +22,30 @@
 
     export default {
         props: {
-            id: null,
+            id: { type: String },
+            mode: {
+                type: String,
+                default: "layout",
+            },
         },
         data: () => ({
             content: null,
             components: null,
             loading: true,
             saving: false,
-            displayMode: 0,
+            currentMode: null,
         }),
         methods: {
             showData: function() {
-                this.displayMode = 2;
+                this.loadLayout();
+                this.currentMode = "data";
             },
             showLayout: function() {
                 this.loadLayout();
-                this.displayMode = 0;
+                this.currentMode = "layout";
             },
             showPreview: function() {
-                this.displayMode = 1;
+                this.currentMode = "preview";
             },
             loadLayout: function() {
                 this.loading = true;
@@ -121,13 +132,36 @@
             this.loadLayout();
 
             window.contentEditor = this;
+
+            if( this.mode )
+            this.currentMode = this.mode;
         },
     };
 </script>
 
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .content-editor-button
+        background-color: $content-editor-component-color
+
+    .button-red
+        background-color: $content-editor-danger
+
+    .content-editor-views
+        border: 5px solid $content-editor-component-color
+</style>
+
 <style>
+    .content-editor-main {
+
+    }
+
+    .content-editor-views {
+
+    }
+
     .content-editor-button {
-        background-color: #3da4ab;
         color: #fff;
         padding: 15px;
         margin: 1em;
@@ -137,9 +171,5 @@
         font-family: sans-serif;
         display: inline-block;
         text-decoration: none;
-    }
-
-    .button-red {
-        background-color: #ab3d3d;
     }
 </style>

@@ -43,13 +43,22 @@
     }
 </style>
 
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .content-editor-component
+        background-color: $content-editor-component-color
+
+    .content-editor-component:hover
+        box-shadow: 0 0 0pt 4pt $content-editor-component-hover-outline
+</style>
+
 <style scoped>
     .component-icon {
         text-align: center;
     }
 
     .content-editor-component {
-        background-color: #3da4ab;
         color: #fff;
         padding: 15px;
         margin: 1em;
@@ -58,10 +67,6 @@
         cursor: grab;
         min-width: 120px;
         flex-grow: 1;
-    }
-
-    .content-editor-component:hover {
-        box-shadow: 0 0 0pt 4pt #0e9aa7;
     }
 
     .content-editor-component span {

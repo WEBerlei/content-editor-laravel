@@ -10,6 +10,7 @@ abstract class ComponentBase extends Model
 {
     protected static $name = 'No Name';
     protected static $icon = 'No Icon';
+    protected static $field = 'text';
 
     public function component()
     {
@@ -43,7 +44,34 @@ abstract class ComponentBase extends Model
 
     protected abstract function doRender();
     protected abstract function doRenderEditor();
-    protected abstract function doVerify( Request $request );
+
+    protected function doVerify(Request $request)
+    {
+        $fieldName = $this->getFieldName();
+
+        if( $request->has( $fieldName ) == false )
+        {
+            return $this->returnFailedVerify( [ $fieldName ] );
+        }
+
+        $this->{static::$field} = $request->input( $fieldName );
+        $this->save();
+
+        return $this->returnSuccessfulVerify();
+    }
+
+    protected function getFieldName()
+    {
+        return 'data_' . static::$field . '_' . $this->component->id;
+    }
+
+    protected function getEditorVariables()
+    {
+        $v[ 'component' ] = $this;
+        $v[ 'name' ] = $this->getFieldName();
+
+        return $v;
+    }
 
     public function render()
     {

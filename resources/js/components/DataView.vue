@@ -1,6 +1,8 @@
 <template>
-    <div class="data-view" v-html="preview">
-
+    <div class="data-view" ref="dataview">
+        <div class="component-editor" v-for="editor in editors">
+            <component-editor ref="editors" :component-id="editor.id"></component-editor>
+        </div>
     </div>
 </template>
 
@@ -16,28 +18,50 @@
         data: () => ({
             preview: "",
         }),
-        computed: {},
-        methods: {
+        computed: {
+            editors: function() {
+                let editors = [];
 
+                for (let i = 0; i < this.content.sections.length; i++) {
+                    for( let j = 0; j < this.content.sections[ i ].components.length; j++ ) {
+                        let component = this.content.sections[ i ].components[ j ];
+                        editors.push( { id: component.id } );
+                    }
+                }
+
+                return editors;
+            }
+        },
+        methods: {
+            saveEditors() {
+                 for( let i = 0; i < this.$refs.editors.length; i++ ) {
+                    this.$refs.editors[ i ].save();
+                 }
+            }
         },
         mounted() {
-            ContentApi.render( this.content.id )
-                .then( output => {
-                    this.preview = output;
-                })
-                .catch(error => {
-                    console.log( error );
-                })
-                .finally(() => {
+            var form = this.$refs.dataview.closest('form');
+            var self = this;
 
-                })
+            if( form !== undefined ) {
+                form.addEventListener('submit', function(e) {
+                    self.saveEditors();
+                });
+            }
         }
     };
 </script>
 
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .data-view
+        background-color: $content-editor-components-background
+</style>
+
 <style scoped>
-    .preview-view {
+    .data-view {
         width: 100%;
-        border: 1px solid #000;
+        padding: 1em;
     }
 </style>

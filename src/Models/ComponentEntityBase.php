@@ -23,6 +23,7 @@ class ComponentEntityBase extends ComponentBase
             c0,0.361-0.293,0.654-0.654,0.654h-3.924c-0.361,0-0.654-0.292-0.654-0.654V2.962c0-0.361,0.293-0.654,0.654-0.654h3.924
             c0.361,0,0.654,0.292,0.654,0.654V6.886z"></path>
     </svg>';
+    protected static $field = 'entity_id';
 
     public function __construct(array $attributes = [])
     {
@@ -36,7 +37,7 @@ class ComponentEntityBase extends ComponentBase
 
     protected function doRenderEditor()
     {
-        $v[ 'component' ] = $this;
+        $v = $this->getEditorVariables();
 
         return view( 'content-editor::editors.entity', $v )->render();
     }
@@ -49,18 +50,5 @@ class ComponentEntityBase extends ComponentBase
         }
 
         return static::$name . ": " . $this->entity_id;
-    }
-
-    protected function doVerify(Request $request)
-    {
-        if( $request->has( 'data_entity_id' ) == false )
-        {
-            return $this->returnFailedVerify( [ 'data_entity_id' ] );
-        }
-
-        $this->entity_id = $request->input( 'data_entity_id' );
-        $this->save();
-
-        return $this->returnSuccessfulVerify();
     }
 }

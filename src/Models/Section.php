@@ -42,4 +42,27 @@ class Section extends Model implements Sortable
     {
         return static::query()->where('content_id', $this->content_id);
     }
+
+    public function createNewComponent( $class, $saveNewComponent = true )
+    {
+        $renderable = new $class();
+
+        if( $renderable != null )
+        {
+            $component = new Component();
+            $component->save();
+
+            $renderable->save();
+
+            $component->setContentComponent($renderable);
+        }
+
+        $component->content_id = $this->content_id;
+        $component->section_id = $this->id;
+
+        if( $saveNewComponent == true )
+        {
+            $component->save();
+        }
+    }
 }

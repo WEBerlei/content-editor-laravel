@@ -33,4 +33,13 @@ class Content extends Model
 
         return $output;
     }
+
+    public function createNewSection() : Section
+    {
+        $section = new Section();
+        $section->content_id = $this->id;
+        $section->save();
+
+        return $section;
+    }
 }

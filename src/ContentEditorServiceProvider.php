@@ -10,6 +10,8 @@ use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentEditorApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ContentApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\ContentController;
+use WEBerlei\ContentEditorLaravel\Models\Content;
+use WEBerlei\ContentEditorLaravel\Observers\ContentObserver;
 
 class ContentEditorServiceProvider extends ServiceProvider
 {
@@ -62,6 +64,8 @@ class ContentEditorServiceProvider extends ServiceProvider
                 Route::post('/component-editor/save', [ComponentEditorApiController::class, 'saveEditorData']);
             });
         });
+
+        Content::observe( ContentObserver::class );
     }
 
     public function register()

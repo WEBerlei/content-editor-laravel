@@ -1,3 +1,12 @@
+const path = require('path');
+
 module.exports = {
-    publicPath: ''
+    publicPath: '',
+    css: {
+        loaderOptions: {
+            sass: {
+                data: `@import "./resources/sass/variables.scss";`
+            }
+        }
+    }
 };

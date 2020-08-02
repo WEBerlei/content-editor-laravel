@@ -1,7 +1,8 @@
 <template>
     <div class="content-editor-modal" v-if="isOpen">
         <div class="modal-box">
-            <component-editor :component-id="componentId" :component-class="componentClass"></component-editor>
+
+            <component-editor @onSave="saved" ref="componenteditor" :component-id="componentId" :component-class="componentClass"></component-editor>
             <a href="#" class="content-editor-button button-save" @click.prevent="save()">
                 <span v-if="isSaving" class="saving-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-clockwise" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -24,9 +25,6 @@
 </template>
 
 <script>
-    import ContentApi from "../services/ContentApi";
-    import ComponentsApi from '../services/ComponentsApi'
-
     export default {
         props: {},
         data: () => ({
@@ -59,38 +57,27 @@
             save: function() {
                 this.isSaving = true;
 
-                var formData = new FormData()
-                formData.append( 'componentId', this.componentId );
-                formData.append( 'componentClass', this.componentClass );
-
-                var inputs = document.getElementsByClassName('content-editor-input');
-
-                for (let i = 0; i < inputs.length; i++) {
-                    formData.append( inputs[ i ].name, inputs[ i ].value );
-                }
-
-                ComponentsApi.saveEditor( formData ).then(output => {
-                    if( output.isValid == true )
-                    {
-                        this.isOpen = false;
-                        this.element.querySelector( '.preview' ).innerHTML = output.newPreview;
-                    }
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-                .finally(() => {
-                    this.isSaving = false;
-                })
+                this.$refs.componenteditor.save();
+            },
+            saved: function( newPreview ) {
+                this.isSaving = false;
+                this.isOpen = false;
+                this.element.querySelector( '.preview' ).innerHTML = newPreview;
             }
         }
     };
 </script>
 
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .modal-box
+        background-color: $content-editor-components-background
+</style>
+
 <style scoped>
     .modal-box {
-        min-width: 50%;
-        background-color: #f6cd61 ;
+        min-width: 90%;
         border: 1px solid #000;
         margin: 1em auto;
         display: inline-block;
@@ -110,7 +97,6 @@
         text-align: center;
     }
     .saving-icon {
-        background-color: #3da4ab;
         width: 100%;
         position: absolute;
         margin-left: auto;

@@ -8,11 +8,13 @@ import LayoutViewComponents from './components/LayoutViewComponents';
 import LayoutViewEditor from './components/LayoutViewEditor';
 import LayoutViewModal from './components/LayoutViewModal';
 
-import ComponentEditor from './components/ComponentEditor';
+import ComponentEditor from "./components/ComponentEditor";
+
 import ContentEditorComponent from './components/ContentEditorComponent';
 import ContentEditorSection from './components/ContentEditorSection';
 
 import axios from 'axios'
+
 
 axios.defaults.baseURL = '/content-editor/api'
 

@@ -26,7 +26,7 @@
 </script>
 
 <style>
-    .svg-icon {
+    .svg-icon, .icon {
         width: 3em;
         height: 3em;
         display: inline;
@@ -43,11 +43,24 @@
         stroke-width: 1;
     }
 </style>
+
+<style lang="sass">
+    @import "./resources/sass/variables.scss"
+
+    .components
+        background-color: $content-editor-components-background
+
+    .component
+        background-color: $content-editor-component-color
+
+    .component-trash
+        background-color: $content-editor-danger
+</style>
+
 <style scoped>
 
 
     .components {
-        background-color: #f6cd61 ;
         flex-grow: 0;
         display: flex;
         flex-direction: column;
@@ -59,8 +72,6 @@
     }
 
     .component, .component-trash {
-        background-color: #3da4ab;
-        color: #fff;
         padding: 15px;
         margin: 1em;
         border-radius: 0.25em;
@@ -74,7 +85,6 @@
         width: 150px;
         height: 110px;
         padding: 0;
-        background-color: #ab3d3d;
         flex-grow: 0;
         background-image: url( '/images/trash.svg' );
         background-repeat: no-repeat;

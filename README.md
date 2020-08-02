@@ -16,8 +16,16 @@ Stuff I think that needs to be done:
     ```
 2) Add content-editor app.js to application app.js (I'm sure this can be cleaner)
     ```bash
+    require( './../../vendor/weberlei/content-editor-laravel/dist/js/manifest')
+    require( './../../vendor/weberlei/content-editor-laravel/dist/js/vendor')
     require( './../../vendor/weberlei/content-editor-laravel/dist/js/app')
     ```
+3) Add content-editor css to app.scss (again, cleaner pls :p)
+    ```bash
+    @import "./../../vendor/weberlei/content-editor-laravel/dist/css/app.css";
+    @import "./../../vendor/weberlei/content-editor-laravel/dist/css/vendor.css";
+    ```
+
 
 You can install the package via composer:
 

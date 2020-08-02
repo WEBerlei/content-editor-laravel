@@ -48,9 +48,7 @@ class ContentApiController
 
             if( $sectionData[ "id" ] == 0 )
             {
-                $section = new Section();
-                $section->content_id = $content->id;
-                $section->save();
+                $section = $content->createNewSection();
             }
             else
             {
@@ -66,17 +64,7 @@ class ContentApiController
 
                 if( $componentData[ "id" ] == 0 )
                 {
-                    $renderable = new $componentData[ "class" ]();
-
-                    if( $renderable != null )
-                    {
-                        $component = new Component();
-                        $component->save();
-
-                        $renderable->save();
-
-                        $component->setContentComponent($renderable);
-                    }
+                    $component = $section->createNewComponent( $componentData[ "class" ], false );
                 }
                 else
                 {

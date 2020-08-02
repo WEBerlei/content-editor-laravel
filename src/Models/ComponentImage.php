@@ -9,16 +9,8 @@ use Illuminate\Http\Request;
 class ComponentImage extends ComponentBase
 {
     protected static $name = 'Image';
-    protected static $icon = '<svg class="svg-icon" viewBox="0 0 20 20">
-                        <path fill="none" d="M6.523,7.683c0.96,0,1.738-0.778,1.738-1.738c0-0.96-0.778-1.738-1.738-1.738c-0.96,0-1.738,0.778-1.738,1.738
-                                        C4.785,6.904,5.563,7.683,6.523,7.683z M5.944,5.365h1.159v1.159H5.944V5.365z M18.113,0.729H1.888
-                                        c-0.64,0-1.159,0.519-1.159,1.159v16.224c0,0.64,0.519,1.159,1.159,1.159h16.225c0.639,0,1.158-0.52,1.158-1.159V1.889
-                                        C19.271,1.249,18.752,0.729,18.113,0.729z M18.113,17.532c0,0.321-0.262,0.58-0.58,0.58H2.467c-0.32,0-0.579-0.259-0.579-0.58
-                                        V2.468c0-0.32,0.259-0.579,0.579-0.579h15.066c0.318,0,0.58,0.259,0.58,0.579V17.532z M15.91,7.85l-4.842,5.385l-3.502-2.488
-                                        c-0.127-0.127-0.296-0.18-0.463-0.17c-0.167-0.009-0.336,0.043-0.463,0.17l-3.425,4.584c-0.237,0.236-0.237,0.619,0,0.856
-                                        c0.236,0.236,0.62,0.236,0.856,0l3.152-4.22l3.491,2.481c0.123,0.123,0.284,0.179,0.446,0.174c0.16,0.005,0.32-0.051,0.443-0.174
-                                        l5.162-5.743c0.238-0.236,0.238-0.619,0-0.856C16.529,7.614,16.146,7.614,15.91,7.85z"></path>
-                    </svg>';
+    protected static $icon = '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24" height="24" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z"/> <line x1="15" y1="8" x2="15.01" y2="8" /> <rect x="4" y="4" width="16" height="16" rx="3" /> <path d="M4 15l4 -4a3 5 0 0 1 3 0l 5 5" /> <path d="M14 14l1 -1a3 5 0 0 1 3 0l 2 2" /> </svg>';
+    protected static $field = 'path';
 
     public function __construct(array $attributes = [])
     {
@@ -37,7 +29,7 @@ class ComponentImage extends ComponentBase
 
     protected function doRenderEditor()
     {
-        $v[ 'component' ] = $this;
+        $v = $this->getEditorVariables();
 
         return view( 'content-editor::editors.image', $v )->render();
     }
@@ -50,18 +42,5 @@ class ComponentImage extends ComponentBase
         }
 
         return $this->path;
-    }
-
-    protected function doVerify(Request $request)
-    {
-        if( $request->has( 'data_path' ) == false )
-        {
-            return $this->returnFailedVerify( [ 'data_path' ] );
-        }
-
-        $this->path = $request->input( 'data_path' );
-        $this->save();
-
-        return $this->returnSuccessfulVerify();
     }
 }
