@@ -25,7 +25,7 @@
     @import "./resources/sass/variables.scss"
 
     .content-editor
-        background-color: $content-editor-layout-background
+        //background-color: $content-editor-layout-background
 </style>
 
 <style scoped>

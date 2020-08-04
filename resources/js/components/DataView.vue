@@ -56,12 +56,11 @@
     @import "./resources/sass/variables.scss"
 
     .data-view
-        background-color: $content-editor-components-background
+        //background-color: $content-editor-components-background
 </style>
 
 <style scoped>
     .data-view {
         width: 100%;
-        padding: 1em;
     }
 </style>

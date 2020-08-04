@@ -1909,6 +1909,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2199,6 +2230,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sortablejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sortablejs */ "./node_modules/sortablejs/modular/sortable.esm.js");
 /* harmony import */ var _LayoutViewModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LayoutViewModal */ "./resources/js/components/LayoutViewModal.vue");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2535,7 +2574,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.data-view {\n  background-color: #f6cd61;\n}", ""]);
+exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/", ""]);
 
 // exports
 
@@ -2573,7 +2612,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor {\n  background-color: #fe8a71;\n}", ""]);
+exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/", ""]);
 
 // exports
 
@@ -2611,7 +2650,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.content-editor-main {\n}\n.content-editor-views {\n}\n.content-editor-button {\n    color: #fff;\n    padding: 15px;\n    margin: 1em;\n    border-radius: 0.25em;\n    text-align: center;\n    flex-grow: 1;\n    font-family: sans-serif;\n    display: inline-block;\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, ".content-editor-main {\n}\n.content-editor-views {\n}\n.content-editor-button {\n  color: #fff;\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  flex-grow: 1;\n  font-family: sans-serif;\n  display: inline-block;\n  text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -2630,7 +2669,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.component-editor > label {\n    display: block;\n    text-align: left;\n    font-size: 0.75em;\n    font-weight: bold;\n    margin-bottom: 0.5em;\n}\n.component-editor > textarea, .component-editor > input {\n    width: 100%;\n    padding: 0.5em;\n}\n", ""]);
+exports.push([module.i, ".component-editor > label {\n  display: block;\n  text-align: left;\n  font-size: 0.75em;\n  font-weight: bold;\n  margin-bottom: 0.5em;\n}\n.component-editor > textarea, .component-editor > input {\n  width: 100%;\n  padding: 0.5em;\n}\n", ""]);
 
 // exports
 
@@ -2649,7 +2688,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.component-icon[data-v-3d906d02] {\n    text-align: center;\n}\n.content-editor-component[data-v-3d906d02] {\n    color: #fff;\n    padding: 15px;\n    margin: 1em;\n    border-radius: 0.25em;\n    text-align: center;\n    cursor: -webkit-grab;\n    cursor: grab;\n    min-width: 120px;\n    flex-grow: 1;\n}\n.content-editor-component span[data-v-3d906d02] {\n    display: block;\n    font-family: sans-serif;\n    margin-top: 1em;\n}\n", ""]);
+exports.push([module.i, ".component-icon[data-v-3d906d02] {\n  text-align: center;\n}\n.content-editor-component[data-v-3d906d02] {\n  color: #fff;\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  cursor: -webkit-grab;\n  cursor: grab;\n  min-width: 120px;\n  flex-grow: 1;\n}\n.content-editor-component span[data-v-3d906d02] {\n  display: block;\n  font-family: sans-serif;\n  margin-top: 1em;\n}\n", ""]);
 
 // exports
 
@@ -2668,7 +2707,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.content-editor-section[data-v-48e09bac] {\n    width: 100%;\n    min-height: 150px;\n    border-radius: 0.25em;\n    display: flex;\n    flex-direction: row;\n\n    margin: 1em 0;\n}\n", ""]);
+exports.push([module.i, ".content-editor-section[data-v-48e09bac] {\n  width: 100%;\n  min-height: 150px;\n  border-radius: 0.25em;\n  display: flex;\n  flex-direction: row;\n  margin: 1em 0;\n}\n", ""]);
 
 // exports
 
@@ -2687,7 +2726,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.data-view[data-v-9edb014c] {\n    width: 100%;\n    padding: 1em;\n}\n", ""]);
+exports.push([module.i, ".data-view[data-v-9edb014c] {\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -2706,7 +2745,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.layout-view[data-v-f2a4bbcc] {\n    position: relative;\n    display: flex;\n\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, ".layout-view[data-v-f2a4bbcc] {\n  position: relative;\n  display: flex;\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -2725,7 +2764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.svg-icon, .icon {\n    width: 3em;\n    height: 3em;\n    display: inline;\n}\n.svg-icon path,\n.svg-icon polygon,\n.svg-icon rect {\n    fill: #ffffff;\n}\n.svg-icon circle {\n    stroke: #ffffff;\n    stroke-width: 1;\n}\n", ""]);
+exports.push([module.i, ".svg-icon, .icon {\n  width: 3em;\n  height: 3em;\n  display: inline;\n}\n.svg-icon path,\n.svg-icon polygon,\n.svg-icon rect {\n  fill: #ffffff;\n}\n.svg-icon circle {\n  stroke: #ffffff;\n  stroke-width: 1;\n}\n", ""]);
 
 // exports
 
@@ -2744,7 +2783,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.components[data-v-0ded0860] {\n    flex-grow: 0;\n    display: flex;\n    flex-direction: column;\n}\n.components-container[data-v-0ded0860] {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n}\n.component[data-v-0ded0860], .component-trash[data-v-0ded0860] {\n    padding: 15px;\n    margin: 1em;\n    border-radius: 0.25em;\n    text-align: center;\n    cursor: -webkit-grab;\n    cursor: grab;\n    min-width: 120px;\n    flex-grow: 1;\n}\n.component-trash[data-v-0ded0860] {\n    width: 150px;\n    height: 110px;\n    padding: 0;\n    flex-grow: 0;\n    background-image: url( '/images/trash.svg' );\n    background-repeat: no-repeat;\n    background-position: center;\n    background-size: 3em;\n}\n.component-trash-icon[data-v-0ded0860] {\n    margin-top: 15px;\n}\n.component span[data-v-0ded0860], .component-trash span[data-v-0ded0860] {\n    display: block;\n    font-family: sans-serif;\n    margin-top: 1em;\n}\n", ""]);
+exports.push([module.i, ".components[data-v-0ded0860] {\n  flex-grow: 0;\n  display: flex;\n  flex-direction: column;\n}\n.components-container[data-v-0ded0860] {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.component[data-v-0ded0860], .component-trash[data-v-0ded0860] {\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  cursor: -webkit-grab;\n  cursor: grab;\n  min-width: 120px;\n  flex-grow: 1;\n}\n.component-trash[data-v-0ded0860] {\n  width: 150px;\n  height: 110px;\n  padding: 0;\n  flex-grow: 0;\n  background-image: url( '/images/trash.svg' );\n  background-repeat: no-repeat;\n  background-position: center;\n  background-size: 3em;\n}\n.component-trash-icon[data-v-0ded0860] {\n  margin-top: 15px;\n}\n.component span[data-v-0ded0860], .component-trash span[data-v-0ded0860] {\n  display: block;\n  font-family: sans-serif;\n  margin-top: 1em;\n}\n", ""]);
 
 // exports
 
@@ -2763,7 +2802,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.content-editor[data-v-b36410b2] {\n    flex-grow: 1;\n    padding: 0 1em;\n}\n\n\n", ""]);
+exports.push([module.i, ".content-editor[data-v-b36410b2] {\n  flex-grow: 1;\n  padding: 0 1em;\n}\n\n\n", ""]);
 
 // exports
 
@@ -2782,7 +2821,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.modal-box[data-v-581bbf3a] {\n    min-width: 90%;\n    border: 1px solid #000;\n    margin: 1em auto;\n    display: inline-block;\n    font-family: sans-serif;\n    padding: 1em;\n}\n.button-save[data-v-581bbf3a] {\n    position: relative;\n}\n.content-editor-modal[data-v-581bbf3a] {\n    position: absolute;\n    background-color: rgba(0, 0, 0, 0.5);\n    width: 100%;\n    z-index: 1000;\n    height: auto;\n    min-height: 100%;\n    text-align: center;\n}\n.saving-icon[data-v-581bbf3a] {\n    width: 100%;\n    position: absolute;\n    margin-left: auto;\n    margin-right: auto;\n    left: 0;\n    right: 0;\n    top: 0.5em;\n    padding-top: 0.25em;\n    height: 1.5em;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, ".modal-box[data-v-581bbf3a] {\n  min-width: 90%;\n  border: 1px solid #000;\n  margin: 1em auto;\n  display: inline-block;\n  font-family: sans-serif;\n  padding: 1em;\n}\n.button-save[data-v-581bbf3a] {\n  position: relative;\n}\n.content-editor-modal[data-v-581bbf3a] {\n  position: absolute;\n  background-color: rgba(0, 0, 0, 0.5);\n  width: 100%;\n  z-index: 1000;\n  height: auto;\n  min-height: 100%;\n  text-align: center;\n}\n.saving-icon[data-v-581bbf3a] {\n  width: 100%;\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n  top: 0.5em;\n  padding-top: 0.25em;\n  height: 1.5em;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -2801,7 +2840,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.preview-view[data-v-1ea95af2] {\n    width: 100%;\n}\n", ""]);
+exports.push([module.i, ".preview-view[data-v-1ea95af2] {\n  width: 100%;\n}\n", ""]);
 
 // exports
 
@@ -7910,73 +7949,154 @@ var render = function() {
       domProps: { value: _vm.contentId }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "content-editor-toolbar" }, [
-      _c(
-        "a",
-        {
-          staticClass: "content-editor-button",
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.showData($event)
-            }
-          }
-        },
-        [_vm._v("Data")]
-      ),
+    _c("div", { staticClass: "overflow-hidden mx-2" }, [
+      _c("div", { staticClass: "py-5" }, [
+        _c(
+          "span",
+          { staticClass: "relative my-2 z-0 inline-flex shadow-sm rounded-md" },
+          [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+                class: {
+                  "bg-primary-400": this.currentMode == "data",
+                  "text-primary-800": this.currentMode == "data"
+                },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.showData($event)
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-5 w-5 mr-2",
+                    attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
+                        "clip-rule": "evenodd"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v("\n                  Data\n              ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+                class: {
+                  "bg-primary-400": this.currentMode == "layout",
+                  "text-primary-800": this.currentMode == "layout"
+                },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.showLayout($event)
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-5 w-5 mr-2",
+                    attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d:
+                          "M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v("\n                  Layout\n              ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass:
+                  "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+                class: {
+                  "bg-primary-400": this.currentMode == "preview",
+                  "text-primary-800": this.currentMode == "preview"
+                },
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.showPreview($event)
+                  }
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "h-5 w-5 mr-2",
+                    attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
+                  },
+                  [
+                    _c("path", {
+                      attrs: { d: "M10 12a2 2 0 100-4 2 2 0 000 4z" }
+                    }),
+                    _c("path", {
+                      attrs: {
+                        "fill-rule": "evenodd",
+                        d:
+                          "M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z",
+                        "clip-rule": "evenodd"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v("\n                  Preview\n              ")
+              ]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
-        "a",
-        {
-          staticClass: "content-editor-button",
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.showLayout($event)
-            }
-          }
-        },
-        [_vm._v("Layout")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "content-editor-button",
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.showPreview($event)
-            }
-          }
-        },
-        [_vm._v("Preview")]
+        "div",
+        { staticClass: "py-5" },
+        [
+          !_vm.loading && _vm.currentMode === "layout"
+            ? _c("layout-view", {
+                attrs: { content: _vm.content, components: _vm.components }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.loading && _vm.currentMode === "preview"
+            ? _c("preview-view", { attrs: { content: _vm.content } })
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.loading && _vm.currentMode === "data"
+            ? _c("data-view", { attrs: { content: _vm.content } })
+            : _vm._e()
+        ],
+        1
       )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "content-editor-views" },
-      [
-        !_vm.loading && _vm.currentMode === "layout"
-          ? _c("layout-view", {
-              attrs: { content: _vm.content, components: _vm.components }
-            })
-          : _vm._e(),
-        _vm._v(" "),
-        !_vm.loading && _vm.currentMode === "preview"
-          ? _c("preview-view", { attrs: { content: _vm.content } })
-          : _vm._e(),
-        _vm._v(" "),
-        !_vm.loading && _vm.currentMode === "data"
-          ? _c("data-view", { attrs: { content: _vm.content } })
-          : _vm._e()
-      ],
-      1
-    )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -8128,20 +8248,49 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "layout-view" },
+    { staticClass: "bg-white overflow-hidden shadow rounded-lg" },
     [
-      _c("layout-view-modal", { ref: "moduleModal" }),
+      _vm._m(0),
       _vm._v(" "),
-      _c("layout-view-editor", {
-        attrs: { content: _vm.content, components: _vm.components }
-      }),
-      _vm._v(" "),
-      _c("layout-view-components", { attrs: { components: _vm.components } })
-    ],
-    1
+      _c("div", {}, [
+        _c(
+          "div",
+          { staticClass: "layout-view" },
+          [
+            _c("layout-view-modal", { ref: "moduleModal" }),
+            _vm._v(" "),
+            _c("layout-view-editor", {
+              attrs: { content: _vm.content, components: _vm.components }
+            }),
+            _vm._v(" "),
+            _c("layout-view-components", {
+              attrs: { components: _vm.components }
+            })
+          ],
+          1
+        )
+      ])
+    ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "bg-gray-50 border-b border-gray-200 px-4 py-5 sm:px-6" },
+      [
+        _c(
+          "h3",
+          { staticClass: "text-lg leading-6 font-medium text-gray-900" },
+          [_vm._v("\n            Layout\n        ")]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -9653,9 +9802,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\content-editor-laravel\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\xampp\htdocs\content-editor-laravel\resources\sass\vendor.scss */"./resources/sass/vendor.scss");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\content-editor-laravel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/dajo/Projekte/content-editor-laravel/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/dajo/Projekte/content-editor-laravel/resources/sass/vendor.scss */"./resources/sass/vendor.scss");
+module.exports = __webpack_require__(/*! /Users/dajo/Projekte/content-editor-laravel/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
