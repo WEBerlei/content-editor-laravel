@@ -1,7 +1,6 @@
 <template>
     <div class="content-editor-main">
         <input type="hidden" name="content_id" :value="contentId" />
-
         <div class="overflow-hidden mx-2">
             <div class="py-5">
                <span class="relative my-2 z-0 inline-flex shadow-sm rounded-md">
