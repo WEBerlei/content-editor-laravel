@@ -1,4 +1,9 @@
-<div class="component-editor">
-    <label for="{{ $name }}">File path</label>
-    <input type="text" id="{{ $name }}" class="content-editor-input" name="{{ $name }}" value="{{ $component->path }}" />
-</div>
+@extends( 'content-editor::editors.layout')
+
+@section( 'label' )
+    @include( 'content-editor::partials.label', [ 'name' => $name, 'label' => 'File path'])
+@endsection
+
+@section( 'editor' )
+    <div class="myDropzone border dropzone text-center" max-files="5" id="myDropzone"></div>
+@endsection

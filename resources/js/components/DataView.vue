@@ -25,7 +25,7 @@
                 for (let i = 0; i < this.content.sections.length; i++) {
                     for( let j = 0; j < this.content.sections[ i ].components.length; j++ ) {
                         let component = this.content.sections[ i ].components[ j ];
-                        editors.push( { id: component.id } );
+                        editors.push( { id: component.id, class: component.renderable_type } );
                     }
                 }
 
@@ -43,7 +43,7 @@
             var form = this.$refs.dataview.closest('form');
             var self = this;
 
-            if( form !== undefined ) {
+            if( form !== null ) {
                 form.addEventListener('submit', function(e) {
                     self.saveEditors();
                 });

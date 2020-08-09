@@ -9,6 +9,7 @@ use WEBerlei\ContentEditorLaravel\Commands\SkeletonCommand;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ComponentEditorApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\ContentApiController;
+use WEBerlei\ContentEditorLaravel\Http\Controllers\Api\UploaderApiController;
 use WEBerlei\ContentEditorLaravel\Http\Controllers\ContentController;
 use WEBerlei\ContentEditorLaravel\Models\Content;
 use WEBerlei\ContentEditorLaravel\Observers\ContentObserver;
@@ -62,6 +63,10 @@ class ContentEditorServiceProvider extends ServiceProvider
 
                 Route::post('/component-editor', [ComponentEditorApiController::class, 'getEditor']);
                 Route::post('/component-editor/save', [ComponentEditorApiController::class, 'saveEditorData']);
+
+                Route::post('/uploader/files', [UploaderApiController::class, 'files']);
+                Route::post('/uploader/post', [UploaderApiController::class, 'post']);
+                Route::post('/uploader/remove', [UploaderApiController::class, 'remove']);
             });
         });
 

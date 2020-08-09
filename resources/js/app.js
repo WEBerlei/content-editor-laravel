@@ -13,7 +13,10 @@ import ComponentEditor from "./components/ComponentEditor";
 import ContentEditorComponent from './components/ContentEditorComponent';
 import ContentEditorSection from './components/ContentEditorSection';
 
+import Uploader from './components/Uploader';
+
 import axios from 'axios'
+
 
 
 axios.defaults.baseURL = '/content-editor/api'
@@ -29,3 +32,5 @@ Vue.component('layout-view-modal', LayoutViewModal);
 Vue.component('component-editor', ComponentEditor);
 Vue.component('content-editor-component', ContentEditorComponent);
 Vue.component('content-editor-section', ContentEditorSection);
+
+Vue.component('uploader', Uploader);

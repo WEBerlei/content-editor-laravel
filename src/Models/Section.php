@@ -64,5 +64,7 @@ class Section extends Model implements Sortable
         {
             $component->save();
         }
+
+        return $component;
     }
 }

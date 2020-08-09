@@ -1,6 +1,8 @@
 let mix = require('laravel-mix')
 const tailwindcss = require('tailwindcss')
 
+require('laravel-mix-purgecss');
+
 mix
     .setPublicPath('dist')
     .js('resources/js/app.js', 'js')
@@ -12,5 +14,8 @@ mix
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],
+    })
+    .purgeCss({
+        enabled: true,
     })
     //.sass('resources/sass/card.scss', 'css')

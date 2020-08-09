@@ -83,6 +83,7 @@
         display: inline-block;
         font-family: sans-serif;
         padding: 1em;
+        text-align: left;
     }
     .button-save {
         position: relative;
