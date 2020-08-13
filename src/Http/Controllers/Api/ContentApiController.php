@@ -33,6 +33,18 @@ class ContentApiController
         return $content->render();
     }
 
+    public function addComponent( Request $request, $content_id )
+    {
+        /** @var Content $content */
+        $content = Content::with( [ 'components', 'sections.components' ] )->firstOrCreate( [ 'id' => $content_id ] );
+
+        /** @var Section $section */
+        $section = $content->createNewSection();
+        $section->createNewComponent( $request->input( 'componentClass' ), true );
+
+        return $this->get( $content_id );
+    }
+
     public function store( Request $request, $content_id )
     {
         /** @var Content $content */

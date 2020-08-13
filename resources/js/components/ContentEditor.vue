@@ -30,7 +30,7 @@
             <div class="py-5">
                 <layout-view :content="content" :components="components" v-if="!loading && currentMode === 'layout'"></layout-view>
                 <preview-view :content="content" v-if="!loading && currentMode === 'preview'"></preview-view>
-                <data-view :content="content" v-if="!loading && currentMode === 'data'"></data-view>
+                <data-view :content="content" :components="components" v-if="!loading && currentMode === 'data'"></data-view>
             </div>
         </div>
 
@@ -133,6 +133,19 @@
                             }
                         }
 
+                    })
+                    .catch(error => {
+                        console.log( error );
+                    })
+                    .finally(() => {
+                        this.saving = false;
+                    })
+            },
+            addComponent: function( componentClass ) {
+                this.saving = true;
+                ContentApi.addComponent( this.contentId, componentClass )
+                    .then( output => {
+                        this.content = output;
                     })
                     .catch(error => {
                         console.log( error );

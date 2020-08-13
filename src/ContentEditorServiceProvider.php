@@ -58,6 +58,7 @@ class ContentEditorServiceProvider extends ServiceProvider
                 Route::get('/content/{content_id}', [ContentApiController::class, 'get']);
                 Route::get('/content/{content_id}/render', [ContentApiController::class, 'render']);
                 Route::post('/content/{content_id}/store', [ContentApiController::class, 'store']);
+                Route::post('/content/{content_id}/addComponent', [ContentApiController::class, 'addComponent']);
 
                 Route::get('/components', [ComponentApiController::class, 'getComponents']);
 

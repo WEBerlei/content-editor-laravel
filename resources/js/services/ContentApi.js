@@ -18,5 +18,14 @@ export default {
             .then( response => {
                 return response.data;
             })
+    },
+    addComponent(content_id, componentClass) {
+        var data = new FormData();
+        data.append( 'componentClass', componentClass );
+
+        return axios.post( '/content/' + content_id + '/addComponent', data )
+            .then( response => {
+                return response.data;
+            })
     }
 }

@@ -15,7 +15,7 @@ mix
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],
     })
-    .purgeCss({
+    /*.purgeCss({
         enabled: true,
-    })
+    })*/
     //.sass('resources/sass/card.scss', 'css')

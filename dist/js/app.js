@@ -2138,6 +2138,18 @@ __webpack_require__.r(__webpack_exports__);
       })["finally"](function () {
         _this2.saving = false;
       });
+    },
+    addComponent: function addComponent(componentClass) {
+      var _this3 = this;
+
+      this.saving = true;
+      _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__["default"].addComponent(this.contentId, componentClass).then(function (output) {
+        _this3.content = output;
+      })["catch"](function (error) {
+        console.log(error);
+      })["finally"](function () {
+        _this3.saving = false;
+      });
     }
   },
   computed: {
@@ -2150,10 +2162,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     _services_ComponentsApi__WEBPACK_IMPORTED_MODULE_1__["default"].getComponents().then(function (output) {
-      _this3.components = output;
+      _this4.components = output;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -2272,11 +2284,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {},
   props: {
-    content: null
+    content: Object,
+    components: Object
   },
   data: function data() {
     return {
@@ -2305,6 +2324,10 @@ __webpack_require__.r(__webpack_exports__);
       for (var i = 0; i < this.$refs.editors.length; i++) {
         this.$refs.editors[i].save();
       }
+    },
+    addComponent: function addComponent(component) {
+      console.log("Add " + component.vue_class);
+      window.contentEditor.addComponent(component.vue_class);
     }
   },
   mounted: function mounted() {
@@ -8252,7 +8275,9 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           !_vm.loading && _vm.currentMode === "data"
-            ? _c("data-view", { attrs: { content: _vm.content } })
+            ? _c("data-view", {
+                attrs: { content: _vm.content, components: _vm.components }
+              })
             : _vm._e()
         ],
         1
@@ -8368,21 +8393,60 @@ var render = function() {
   return _c(
     "div",
     { ref: "dataview", staticClass: "data-view" },
-    _vm._l(_vm.editors, function(editor) {
-      return _c(
+    [
+      _vm._l(_vm.editors, function(editor) {
+        return _c(
+          "div",
+          { staticClass: "component-editor" },
+          [
+            _c("component-editor", {
+              ref: "editors",
+              refInFor: true,
+              attrs: { "component-id": editor.id }
+            })
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c(
         "div",
-        { staticClass: "component-editor" },
+        {
+          staticClass: "data-components-list",
+          attrs: { id: "components-list" }
+        },
         [
-          _c("component-editor", {
-            ref: "editors",
-            refInFor: true,
-            attrs: { "component-id": editor.id }
+          _c(
+            "span",
+            {
+              staticClass:
+                "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 transition ease-in-out duration-150"
+            },
+            [_vm._v("Modul hinzufügen: ")]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.components, function(component) {
+            return _c(
+              "a",
+              {
+                staticClass:
+                  "-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.addComponent(component)
+                  }
+                }
+              },
+              [_vm._v(_vm._s(component.vue_name))]
+            )
           })
         ],
-        1
+        2
       )
-    }),
-    0
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -12167,6 +12231,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   store: function store(content_id, data) {
     return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/content/' + content_id + '/store', data).then(function (response) {
+      return response.data;
+    });
+  },
+  addComponent: function addComponent(content_id, componentClass) {
+    var data = new FormData();
+    data.append('componentClass', componentClass);
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/content/' + content_id + '/addComponent', data).then(function (response) {
       return response.data;
     });
   }
