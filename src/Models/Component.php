@@ -12,6 +12,14 @@ class Component extends Model implements Sortable
 {
     use SortableTrait;
 
+    protected $fillable = [
+        'content_id',
+        'section_id',
+        'order_column',
+        'renderable_id',
+        'renderable_type',
+    ];
+
     public function __construct(array $attributes = [])
     {
         $this->setTable( config( 'content-editor.table_prefix' ) . "components" );

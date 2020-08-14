@@ -11,6 +11,11 @@ class Section extends Model implements Sortable
 {
     use SortableTrait;
 
+    protected $fillable = [
+        'content_id',
+        'order_column',
+    ];
+
     public function __construct(array $attributes = [])
     {
         $this->setTable( config( 'content-editor.table_prefix' ) . "sections" );
@@ -59,6 +64,7 @@ class Section extends Model implements Sortable
 
         $component->content_id = $this->content_id;
         $component->section_id = $this->id;
+        $component->setHighestOrderNumber();
 
         if( $saveNewComponent == true )
         {

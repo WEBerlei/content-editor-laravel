@@ -38,6 +38,7 @@ class Content extends Model
     {
         $section = new Section();
         $section->content_id = $this->id;
+        $section->setHighestOrderNumber();
         $section->save();
 
         return $section;
