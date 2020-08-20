@@ -45,6 +45,16 @@ class Component extends Model implements Sortable
         return $this->morphTo();
     }
 
+    public function teaser( $length = 200 )
+    {
+        if( $this->renderable != null )
+        {
+            return $this->renderable->teaser( $length );
+        }
+        
+        return "";
+    }
+
     public function render()
     {
         if( $this->renderable == null )
