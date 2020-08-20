@@ -30,7 +30,7 @@
             <div class="py-5">
                 <layout-view :content="content" :components="components" v-if="!loading && currentMode === 'layout'"></layout-view>
                 <preview-view :content="content" v-if="!loading && currentMode === 'preview'"></preview-view>
-                <data-view :content="content" :components="components" v-if="!loading && currentMode === 'data'"></data-view>
+                <data-view ref="dataView" :content="content" :components="components" v-if="!loading && currentMode === 'data'"></data-view>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
             id: { type: String },
             mode: {
                 type: String,
-                default: "layout",
+                default: "data",
             },
         },
         data: () => ({
@@ -68,14 +68,14 @@
         methods: {
             showData: function() {
                 this.loadLayout();
-                this.currentMode = "data";
+                this.setMode( "data" );
             },
             showLayout: function() {
                 this.loadLayout();
-                this.currentMode = "layout";
+                this.setMode( "layout" );
             },
             showPreview: function() {
-                this.currentMode = "preview";
+                this.setMode( "preview" );
             },
             loadLayout: function() {
                 this.loading = true;
@@ -89,8 +89,17 @@
                         this.loading = false;
                     });
             },
+            setMode( newMode ) {
+                this.onLeaveMode(this.currentMode);
+                this.currentMode = newMode;
+            },
+            onLeaveMode( oldMode ) {
+                if( oldMode === "data" ) {
+                    this.$refs.dataView.saveEditors();
+                }
+            },
             save: function() {
-                if( this.saving == true )  {
+                if( this.saving === true )  {
                     return;
                 }
 
@@ -214,5 +223,13 @@
         font-family: sans-serif;
         display: inline-block;
         text-decoration: none;
+    }
+
+    .trix-button-group--file-tools {
+        display: none !important;
+    }
+
+    .trix-button--icon-heading-1::before {
+        background-image: url( '/images/heading.svg' ) !important;
     }
 </style>

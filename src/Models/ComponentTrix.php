@@ -34,6 +34,6 @@ class ComponentTrix extends ComponentTextarea
 
     protected function getTextForPreview()
     {
-        return str_replace(PHP_EOL, " - ", strip_tags( $this->br2nl( $this->text ) ) );
+        return str_replace(PHP_EOL, " ", strip_tags( $this->br2nl( $this->text ) ) );
     }
 }

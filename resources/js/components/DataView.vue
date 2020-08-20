@@ -45,7 +45,7 @@
                     this.$refs.editors[ i ].save();
                  }
             },
-            addComponent(component) { 
+            addComponent(component) {
                 console.log( "Add " + component.vue_class );
                 window.contentEditor.addComponent( component.vue_class );
             },

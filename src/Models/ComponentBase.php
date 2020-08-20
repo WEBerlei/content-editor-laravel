@@ -83,6 +83,11 @@ abstract class ComponentBase extends Model
         return $this->doRenderEditor();
     }
 
+    public function teaser( $length = 200 )
+    {
+        return "";
+    }
+
     public function verify( Request $request )
     {
         return $this->doVerify( $request );

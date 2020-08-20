@@ -1,13 +1,16 @@
 <template>
-    <div class="bg-white overflow-hidden shadow rounded-lg">
+    <div class="bg-white overflow-hidden shadow rounded-lg" @keydown.esc="cancel()">
+
         <div class="bg-gray-50 border-b border-gray-200 px-4 py-5 sm:px-6">
             <h3 class="text-lg leading-6 font-medium text-gray-900">
                 Layout
             </h3>
         </div>
-        <div class="">
+        <div class="layout-view-container">
+            <layout-view-modal ref="moduleModal"></layout-view-modal>
+
             <div class="layout-view">
-                <layout-view-modal ref="moduleModal"></layout-view-modal>
+
                 <layout-view-editor :content="content" :components="components"></layout-view-editor>
                 <layout-view-components :components="components"></layout-view-components>
             </div>
@@ -94,5 +97,8 @@
         display: flex;
 
         width: 100%;
+    }
+    .layout-view-container {
+
     }
 </style>

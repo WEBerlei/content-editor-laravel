@@ -6,6 +6,6 @@
 
 @section( 'editor' )
     <input id="{{ $name }}" value="{{ $component->text }}" type="hidden" name="{{ $name }}" class="content-editor-input">
-    <trix-editor style="min-height:500px" input="{{ $name }}"></trix-editor>
+    <trix-editor style="min-height:200px" class="prose w-full max-w-none" input="{{ $name }}"></trix-editor>
 @endsection
 

@@ -34,9 +34,14 @@ class ComponentTextarea extends ComponentBase
         return view( 'content-editor::editors.textarea', $v )->render();
     }
 
+    public function teaser( $length = 200 )
+    {
+        return $this->getPreviewFromString( $this->getTextForPreview(), $length, "" );
+    }
+
     public function getComponentPreview()
     {
-        return $this->getPreviewFromString( $this->getTextForPreview(), parent::getComponentPreview() );
+        return $this->getPreviewFromString( $this->getTextForPreview(), 50, parent::getComponentPreview() );
     }
 
     protected function getTextForPreview()
@@ -44,16 +49,16 @@ class ComponentTextarea extends ComponentBase
         return $this->text;
     }
 
-    protected function getPreviewFromString( $string, $default = "Textarea" )
+    protected function getPreviewFromString( $string, $length = 50, $default = "Textarea" )
     {
         if( strlen( $string ) == 0 )
         {
             return $default;
         }
 
-        $preview = substr( $string, 0, 50 );
+        $preview = substr( $string, 0, $length );
 
-        if( strlen( $string ) > 53 )
+        if( strlen( $string ) > $length + 3 )
         {
             $preview .= '...';
         }

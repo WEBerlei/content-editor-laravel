@@ -34,6 +34,30 @@ class Content extends Model
         return $output;
     }
 
+    public function teaser( $length = 200 )
+    {
+        $output = "";
+
+        foreach( $this->sections as $section )
+        {
+            if( !empty( $output ) )
+            {
+                $output .= " ";
+            }
+
+            $remainingLength = $length - strlen( $output );
+
+            if( $remainingLength <= 0 )
+            {
+                break;
+            }
+
+            $output .= $section->teaser( $remainingLength );
+        }
+
+        return $output;
+    }
+
     public function createNewSection() : Section
     {
         $section = new Section();

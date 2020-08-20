@@ -2050,7 +2050,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     mode: {
       type: String,
-      "default": "layout"
+      "default": "data"
     }
   },
   data: function data() {
@@ -2065,14 +2065,14 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     showData: function showData() {
       this.loadLayout();
-      this.currentMode = "data";
+      this.setMode("data");
     },
     showLayout: function showLayout() {
       this.loadLayout();
-      this.currentMode = "layout";
+      this.setMode("layout");
     },
     showPreview: function showPreview() {
-      this.currentMode = "preview";
+      this.setMode("preview");
     },
     loadLayout: function loadLayout() {
       var _this = this;
@@ -2086,10 +2086,19 @@ __webpack_require__.r(__webpack_exports__);
         _this.loading = false;
       });
     },
+    setMode: function setMode(newMode) {
+      this.onLeaveMode(this.currentMode);
+      this.currentMode = newMode;
+    },
+    onLeaveMode: function onLeaveMode(oldMode) {
+      if (oldMode === "data") {
+        this.$refs.dataView.saveEditors();
+      }
+    },
     save: function save() {
       var _this2 = this;
 
-      if (this.saving == true) {
+      if (this.saving === true) {
         return;
       }
 
@@ -2372,6 +2381,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2546,6 +2558,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -2558,7 +2574,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {},
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    window.contentEditorLayoutModal = this;
+    document.addEventListener('keyup', function (e) {
+      if (e.key === "Escape") {
+        if (window.contentEditorLayoutModal.isOpen == true) {
+          window.contentEditorLayoutModal.cancel();
+        }
+      }
+    });
+  },
   methods: {
     open: function open(element, component_id, component_class) {
       if (component_id === 0) {
@@ -2706,7 +2731,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor-button {\n  background-color: #3da4ab;\n}\n.button-red {\n  background-color: #ab3d3d;\n}\n.content-editor-views {\n  border: 5px solid #3da4ab;\n}", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor-button {\n  background-color: #9caa9b;\n}\n.button-red {\n  background-color: #ab3d3d;\n}\n.content-editor-views {\n  border: 5px solid #9caa9b;\n}", ""]);
 
 // exports
 
@@ -2725,7 +2750,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor-component {\n  background-color: #3da4ab;\n}\n.content-editor-component:hover {\n  box-shadow: 0 0 0pt 4pt #0e9aa7;\n}", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor-component {\n  background-color: #9caa9b;\n}\n.content-editor-component:hover {\n  box-shadow: 0 0 0pt 4pt #778b76;\n}", ""]);
 
 // exports
 
@@ -2744,7 +2769,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor-section {\n  border: 5px dashed #3da4ab;\n}", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.content-editor-section {\n  border: 5px dashed #9caa9b;\n}", ""]);
 
 // exports
 
@@ -2763,7 +2788,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/", ""]);
 
 // exports
 
@@ -2782,7 +2807,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.components {\n  background-color: #f6cd61;\n}\n.component {\n  background-color: #3da4ab;\n}\n.component-trash {\n  background-color: #ab3d3d;\n}", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.components {\n  background-color: #fff9f1;\n}\n.component {\n  background-color: #9caa9b;\n}\n.component-trash {\n  background-color: #ab3d3d;\n}", ""]);
 
 // exports
 
@@ -2801,7 +2826,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/", ""]);
 
 // exports
 
@@ -2820,7 +2845,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.modal-box {\n  background-color: #f6cd61;\n}", ""]);
+exports.push([module.i, "/*$content-editor-component-color: #3da4ab;\n$content-editor-component-hover-outline: #0e9aa7;*/\n\n/*$content-editor-layout-background: #9b9fe3;\n$content-editor-components-background: #9b9fe3;\n$content-editor-component-color: #212adb;\n$content-editor-danger: #212adb;\n$content-editor-component-hover-outline: #ff0000;\n*/\n.modal-box {\n  background-color: #fff9f1;\n}", ""]);
 
 // exports
 
@@ -2839,7 +2864,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".content-editor-main {\n}\n.content-editor-views {\n}\n.content-editor-button {\n  color: #fff;\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  flex-grow: 1;\n  font-family: sans-serif;\n  display: inline-block;\n  text-decoration: none;\n}\n", ""]);
+exports.push([module.i, ".content-editor-main {\n}\n.content-editor-views {\n}\n.content-editor-button {\n  color: #fff;\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  flex-grow: 1;\n  font-family: sans-serif;\n  display: inline-block;\n  text-decoration: none;\n}\n.trix-button-group--file-tools {\n  display: none !important;\n}\n.trix-button--icon-heading-1::before {\n  background-image: url( '/images/heading.svg' ) !important;\n}\n", ""]);
 
 // exports
 
@@ -2934,7 +2959,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".layout-view[data-v-f2a4bbcc] {\n  position: relative;\n  display: flex;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, ".layout-view[data-v-f2a4bbcc] {\n  position: relative;\n  display: flex;\n  width: 100%;\n}\n.layout-view-container[data-v-f2a4bbcc] {\n}\n", ""]);
 
 // exports
 
@@ -3010,7 +3035,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".modal-box[data-v-581bbf3a] {\n  min-width: 90%;\n  border: 1px solid #000;\n  margin: 1em auto;\n  display: inline-block;\n  font-family: sans-serif;\n  padding: 1em;\n  text-align: left;\n}\n.button-save[data-v-581bbf3a] {\n  position: relative;\n}\n.content-editor-modal[data-v-581bbf3a] {\n  position: absolute;\n  background-color: rgba(0, 0, 0, 0.5);\n  width: 100%;\n  z-index: 1000;\n  height: auto;\n  min-height: 100%;\n  text-align: center;\n}\n.saving-icon[data-v-581bbf3a] {\n  width: 100%;\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n  top: 0.5em;\n  padding-top: 0.25em;\n  height: 1.5em;\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, ".modal-box[data-v-581bbf3a] {\n  min-width: 90%;\n  border: 1px solid #000;\n  margin: 1em auto;\n  display: inline-block;\n  font-family: sans-serif;\n  padding: 1em;\n  text-align: left;\n  left: 5%;\n  position: absolute;\n  z-index: 1500;\n}\n.button-save[data-v-581bbf3a] {\n  position: relative;\n}\n.content-editor-modal[data-v-581bbf3a] {\n  position: absolute;\n  left: 0;\n  right: 0;\n  z-index: 10;\n  height: auto;\n  min-height: 100%;\n  text-align: center;\n}\n.saving-icon[data-v-581bbf3a] {\n  width: 100%;\n  position: absolute;\n  margin-left: auto;\n  margin-right: auto;\n  left: 0;\n  right: 0;\n  top: 0.5em;\n  padding-top: 0.25em;\n  height: 1.5em;\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -8276,6 +8301,7 @@ var render = function() {
           _vm._v(" "),
           !_vm.loading && _vm.currentMode === "data"
             ? _c("data-view", {
+                ref: "dataView",
                 attrs: { content: _vm.content, components: _vm.components }
               })
             : _vm._e()
@@ -8473,28 +8499,46 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "bg-white overflow-hidden shadow rounded-lg" },
+    {
+      staticClass: "bg-white overflow-hidden shadow rounded-lg",
+      on: {
+        keydown: function($event) {
+          if (
+            !$event.type.indexOf("key") &&
+            _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
+          ) {
+            return null
+          }
+          return _vm.cancel()
+        }
+      }
+    },
     [
       _vm._m(0),
       _vm._v(" "),
-      _c("div", {}, [
-        _c(
-          "div",
-          { staticClass: "layout-view" },
-          [
-            _c("layout-view-modal", { ref: "moduleModal" }),
-            _vm._v(" "),
-            _c("layout-view-editor", {
-              attrs: { content: _vm.content, components: _vm.components }
-            }),
-            _vm._v(" "),
-            _c("layout-view-components", {
-              attrs: { components: _vm.components }
-            })
-          ],
-          1
-        )
-      ])
+      _c(
+        "div",
+        { staticClass: "layout-view-container" },
+        [
+          _c("layout-view-modal", { ref: "moduleModal" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "layout-view" },
+            [
+              _c("layout-view-editor", {
+                attrs: { content: _vm.content, components: _vm.components }
+              }),
+              _vm._v(" "),
+              _c("layout-view-components", {
+                attrs: { components: _vm.components }
+              })
+            ],
+            1
+          )
+        ],
+        1
+      )
     ]
   )
 }
@@ -8627,103 +8671,136 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isOpen
-    ? _c("div", { staticClass: "content-editor-modal" }, [
-        _c(
-          "div",
-          { staticClass: "modal-box" },
-          [
-            _c("component-editor", {
-              ref: "componenteditor",
-              attrs: {
-                "component-id": _vm.componentId,
-                "component-class": _vm.componentClass
-              },
-              on: { onSave: _vm.saved }
-            }),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "content-editor-button button-save",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.save()
+    ? _c(
+        "div",
+        {
+          staticClass: "content-editor-modal",
+          on: {
+            keydown: function($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "esc", 27, $event.key, ["Esc", "Escape"])
+              ) {
+                return null
+              }
+              return _vm.cancel()
+            }
+          }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "modal-box" },
+            [
+              _c("component-editor", {
+                ref: "componenteditor",
+                attrs: {
+                  "component-id": _vm.componentId,
+                  "component-class": _vm.componentClass
+                },
+                on: { onSave: _vm.saved }
+              }),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "content-editor-button button-save",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.save()
+                    }
                   }
-                }
-              },
-              [
-                _vm.isSaving
-                  ? _c("span", { staticClass: "saving-icon" }, [
-                      _c(
-                        "svg",
-                        {
-                          staticClass:
-                            "icon icon-tabler icon-tabler-rotate-clockwise",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "24",
-                            height: "24",
-                            viewBox: "0 0 24 24",
-                            "stroke-width": "2",
-                            stroke: "currentColor",
-                            fill: "none",
-                            "stroke-linecap": "round",
-                            "stroke-linejoin": "round"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: { stroke: "none", d: "M0 0h24v24H0z" }
-                          }),
-                          _vm._v(" "),
-                          _c("path", {
-                            attrs: { d: "M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5" }
-                          }),
-                          _vm._v(" "),
-                          _c("animateTransform", {
+                },
+                [
+                  _vm.isSaving
+                    ? _c("span", { staticClass: "saving-icon" }, [
+                        _c(
+                          "svg",
+                          {
+                            staticClass:
+                              "icon icon-tabler icon-tabler-rotate-clockwise",
                             attrs: {
-                              attributeName: "transform",
-                              attributeType: "XML",
-                              type: "rotate",
-                              from: "0 0 0",
-                              to: "360 0 0",
-                              dur: "2s",
-                              repeatCount: "indefinite"
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "24",
+                              height: "24",
+                              viewBox: "0 0 24 24",
+                              "stroke-width": "2",
+                              stroke: "currentColor",
+                              fill: "none",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round"
                             }
-                          })
-                        ],
-                        1
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("span", [_vm._v("Save")])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "content-editor-button button-red",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.cancel()
+                          },
+                          [
+                            _c("path", {
+                              attrs: { stroke: "none", d: "M0 0h24v24H0z" }
+                            }),
+                            _vm._v(" "),
+                            _c("path", {
+                              attrs: { d: "M4.05 11a8 8 0 1 1 .5 4m-.5 5v-5h5" }
+                            }),
+                            _vm._v(" "),
+                            _c("animateTransform", {
+                              attrs: {
+                                attributeName: "transform",
+                                attributeType: "XML",
+                                type: "rotate",
+                                from: "0 0 0",
+                                to: "360 0 0",
+                                dur: "2s",
+                                repeatCount: "indefinite"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Save")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "content-editor-button button-red",
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.cancel()
+                    }
                   }
-                }
-              },
-              [_vm._v("Cancel")]
-            )
-          ],
-          1
-        )
-      ])
+                },
+                [_vm._v("Cancel")]
+              )
+            ],
+            1
+          )
+        ]
+      )
     : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "fixed inset-0 transition-opacity",
+        staticStyle: { "z-index": "1000" }
+      },
+      [_c("div", { staticClass: "absolute inset-0 bg-gray-900 opacity-50" })]
+    )
+  }
+]
 render._withStripped = true
 
 

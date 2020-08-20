@@ -1,5 +1,9 @@
 <template>
-    <div class="content-editor-modal" v-if="isOpen">
+    <div class="content-editor-modal" v-if="isOpen" @keydown.esc="cancel()">
+        <div class="fixed inset-0 transition-opacity" style="z-index: 1000">
+            <div class="absolute inset-0 bg-gray-900 opacity-50"></div>
+        </div>
+
         <div class="modal-box">
 
             <component-editor @onSave="saved" ref="componenteditor" :component-id="componentId" :component-class="componentClass"></component-editor>
@@ -36,7 +40,15 @@
         }),
         computed: {},
         mounted() {
+            window.contentEditorLayoutModal = this;
 
+            document.addEventListener('keyup', function (e) {
+                if(e.key === "Escape") {
+                    if( window.contentEditorLayoutModal.isOpen == true ) {
+                        window.contentEditorLayoutModal.cancel();
+                    }
+                }
+            });
         },
         methods: {
             open: function(element, component_id, component_class) {
@@ -84,15 +96,19 @@
         font-family: sans-serif;
         padding: 1em;
         text-align: left;
+        left: 5%;
+        position: absolute;
+        z-index: 1500;
     }
     .button-save {
         position: relative;
     }
     .content-editor-modal {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.5);
-        width: 100%;
-        z-index: 1000;
+
+        left: 0;
+        right: 0;
+        z-index: 10;
         height: auto;
         min-height: 100%;
         text-align: center;
