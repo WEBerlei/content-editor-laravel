@@ -51,7 +51,7 @@ class Component extends Model implements Sortable
         {
             return $this->renderable->teaser( $length );
         }
-        
+
         return "";
     }
 

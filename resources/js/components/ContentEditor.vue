@@ -49,6 +49,7 @@
 <script>
     import ContentApi from '../services/ContentApi'
     import ComponentsApi from '../services/ComponentsApi'
+    import LayoutView from "./LayoutView";
 
     export default {
         props: {
@@ -57,6 +58,9 @@
                 type: String,
                 default: "data",
             },
+        },
+        components: {
+            'layout-view': LayoutView,
         },
         data: () => ({
             content: null,

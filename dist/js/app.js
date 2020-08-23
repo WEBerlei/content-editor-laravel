@@ -1993,6 +1993,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_ContentApi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/ContentApi */ "./resources/js/services/ContentApi.js");
 /* harmony import */ var _services_ComponentsApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/ComponentsApi */ "./resources/js/services/ComponentsApi.js");
+/* harmony import */ var _LayoutView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LayoutView */ "./resources/js/components/LayoutView.vue");
 //
 //
 //
@@ -2041,6 +2042,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2052,6 +2054,9 @@ __webpack_require__.r(__webpack_exports__);
       type: String,
       "default": "data"
     }
+  },
+  components: {
+    'layout-view': _LayoutView__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -12392,4 +12397,4 @@ module.exports = __webpack_require__(/*! C:\xampp\htdocs\content-editor-laravel\
 
 /***/ })
 
-},[[0,"/js/manifest"]]]);
+},[[0,"/js/manifest","/js/vendor"]]]);

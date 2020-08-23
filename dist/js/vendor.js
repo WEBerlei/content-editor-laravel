@@ -547,4 +547,4 @@ module.exports = __webpack_require__(/*! trix */"./node_modules/trix/dist/trix.j
 
 /***/ })
 
-},[[1,"/js/manifest"]]]);
+}]);
