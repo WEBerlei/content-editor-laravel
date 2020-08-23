@@ -14,7 +14,14 @@ mix
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('./tailwind.config.js') ],
+
     })
+    .webpackConfig({
+        output: {
+            jsonpFunction: "o3iv79d0732goag" // use your own random string here
+        }
+    })
+
 
     /*.purgeCss({
         enabled: true,
