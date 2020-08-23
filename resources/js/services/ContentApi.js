@@ -2,19 +2,19 @@ import axios from 'axios'
 
 export default {
     get(content_id) {
-        return axios.get( '/content/' + content_id )
+        return axios.get( window.contentEditorBaseUrl + '/content/' + content_id )
             .then( response => {
                 return response.data;
             })
     },
     render(content_id) {
-        return axios.get( '/content/' + content_id + '/render' )
+        return axios.get( window.contentEditorBaseUrl + '/content/' + content_id + '/render' )
             .then( response => {
                 return response.data;
             })
     },
     store(content_id, data) {
-        return axios.post( '/content/' + content_id + '/store', data )
+        return axios.post( window.contentEditorBaseUrl + '/content/' + content_id + '/store', data )
             .then( response => {
                 return response.data;
             })
@@ -23,7 +23,7 @@ export default {
         var data = new FormData();
         data.append( 'componentClass', componentClass );
 
-        return axios.post( '/content/' + content_id + '/addComponent', data )
+        return axios.post( window.contentEditorBaseUrl + '/content/' + content_id + '/addComponent', data )
             .then( response => {
                 return response.data;
             })

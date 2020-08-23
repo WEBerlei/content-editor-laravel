@@ -7,20 +7,20 @@ export default {
             componentClass: componentClass
         }
 
-        return axios.post( '/component-editor', data )
+        return axios.post( window.contentEditorBaseUrl + '/component-editor', data )
             .then( response => {
                 return response.data;
             })
     },
     saveEditor( formData ) {
 
-        return axios.post( '/component-editor/save', formData )
+        return axios.post( window.contentEditorBaseUrl + '/component-editor/save', formData )
             .then( response => {
                 return response.data;
             })
     },
     getComponents() {
-        return axios.get( '/components' )
+        return axios.get( window.contentEditorBaseUrl + '/components' )
             .then( response => {
                 return response.data;
             })

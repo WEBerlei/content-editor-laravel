@@ -6,7 +6,7 @@ export default {
             componentId: componentId,
         }
 
-        return axios.post( '/uploader/files', data )
+        return axios.post( window.contentEditorBaseUrl + '/uploader/files', data )
             .then( response => {
                 return response.data;
             })
@@ -17,7 +17,7 @@ export default {
             fileId: fileId,
         }
 
-        return axios.post( '/uploader/remove', data )
+        return axios.post( window.contentEditorBaseUrl + '/uploader/remove', data )
             .then( response => {
                 return response.data;
             })

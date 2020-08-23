@@ -76,7 +76,7 @@
 
                             var myDropzone = new Dropzone(dropzones[di],
                                 {
-                                    url: axios.defaults.baseURL + "/uploader/post",
+                                    url: window.contentEditorBaseUrl + "/uploader/post",
                                     headers: {
                                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
                                     },

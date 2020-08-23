@@ -15,11 +15,7 @@ import ContentEditorSection from './components/ContentEditorSection';
 
 import Uploader from './components/Uploader';
 
-import axios from 'axios'
-
-
-
-axios.defaults.baseURL = '/content-editor/api'
+window.contentEditorBaseUrl = '/content-editor/api'
 
 Vue.component('content-editor', ContentEditor);
 Vue.component('data-view', DataView);
