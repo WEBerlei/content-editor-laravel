@@ -53,7 +53,7 @@
 
     export default {
         props: {
-            id: { type: String },
+            id: {  },
             mode: {
                 type: String,
                 default: "data",
@@ -99,8 +99,11 @@
             },
             onLeaveMode( oldMode ) {
                 if( oldMode === "data" ) {
-                    this.$refs.dataView.saveEditors();
+                    this.saveChangesToEditors();
                 }
+            },
+            saveChangesToEditors() {
+                this.$refs.dataView.saveEditors();
             },
             save: function() {
                 if( this.saving === true )  {
@@ -170,14 +173,22 @@
         },
         computed: {
             contentId: function() {
+
                 if( this.content == null ) {
+                    if( isNaN( this.id ) || !(this.id > 0) ) {
+                        return 0;
+                    }
+
                     return this.id;
                 }
+
 
                 return this.content.id;
             }
         },
         mounted() {
+            window.contentEditor = this;
+
             ComponentsApi.getComponents().then(output => {
                 this.components = output;
             })
@@ -186,8 +197,6 @@
             })
 
             this.loadLayout();
-
-            window.contentEditor = this;
 
             if( this.mode )
             this.currentMode = this.mode;

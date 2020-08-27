@@ -13,7 +13,17 @@ class ContentApiController
 {
     public function get( $content_id )
     {
-        $content = Content::with( [ 'sections.components.renderable' ] )->firstOrCreate( [ 'id' => $content_id ] );
+        $content = null;
+        if( $content_id == 0 )
+        {
+            /** @var Content $content */
+            $content = Content::create();
+            $content->load( ['sections.components.renderable'] );
+        }
+        else
+        {
+            $content = Content::with(['sections.components.renderable'])->firstOrCreate(['id' => $content_id]);
+        }
 
         foreach( $content->sections as $section )
         {
