@@ -1899,7 +1899,7 @@ __webpack_require__.r(__webpack_exports__);
             }
 
             var myDropzone = new _dropzone_min__WEBPACK_IMPORTED_MODULE_1___default.a(dropzones[di], {
-              url: axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL + "/uploader/post",
+              url: window.contentEditorBaseUrl + "/uploader/post",
               headers: {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
               },
@@ -2047,9 +2047,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    id: {
-      type: String
-    },
+    id: {},
     mode: {
       type: String,
       "default": "data"
@@ -2097,8 +2095,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     onLeaveMode: function onLeaveMode(oldMode) {
       if (oldMode === "data") {
-        this.$refs.dataView.saveEditors();
+        this.saveChangesToEditors();
       }
+    },
+    saveChangesToEditors: function saveChangesToEditors() {
+      this.$refs.dataView.saveEditors();
     },
     save: function save() {
       var _this2 = this;
@@ -2169,6 +2170,10 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     contentId: function contentId() {
       if (this.content == null) {
+        if (isNaN(this.id) || !(this.id > 0)) {
+          return 0;
+        }
+
         return this.id;
       }
 
@@ -2178,13 +2183,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this4 = this;
 
+    window.contentEditor = this;
     _services_ComponentsApi__WEBPACK_IMPORTED_MODULE_1__["default"].getComponents().then(function (output) {
       _this4.components = output;
     })["catch"](function (error) {
       console.log(error);
     });
     this.loadLayout();
-    window.contentEditor = this;
     if (this.mode) this.currentMode = this.mode;
   }
 });
@@ -9113,8 +9118,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ContentEditorComponent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/ContentEditorComponent */ "./resources/js/components/ContentEditorComponent.vue");
 /* harmony import */ var _components_ContentEditorSection__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/ContentEditorSection */ "./resources/js/components/ContentEditorSection.vue");
 /* harmony import */ var _components_Uploader__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Uploader */ "./resources/js/components/Uploader.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_11__);
 //content-editor-laravel app.js
 
 
@@ -9127,8 +9130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-axios__WEBPACK_IMPORTED_MODULE_11___default.a.defaults.baseURL = '/content-editor/api';
+window.contentEditorBaseUrl = '/content-editor/api';
 Vue.component('content-editor', _components_ContentEditor_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.component('data-view', _components_DataView__WEBPACK_IMPORTED_MODULE_1__["default"]);
 Vue.component('preview-view', _components_PreviewView__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -12270,17 +12272,17 @@ __webpack_require__.r(__webpack_exports__);
       componentId: componentId,
       componentClass: componentClass
     };
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/component-editor', data).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.contentEditorBaseUrl + '/component-editor', data).then(function (response) {
       return response.data;
     });
   },
   saveEditor: function saveEditor(formData) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/component-editor/save', formData).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.contentEditorBaseUrl + '/component-editor/save', formData).then(function (response) {
       return response.data;
     });
   },
   getComponents: function getComponents() {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/components').then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(window.contentEditorBaseUrl + '/components').then(function (response) {
       return response.data;
     });
   }
@@ -12302,24 +12304,24 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   get: function get(content_id) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/content/' + content_id).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(window.contentEditorBaseUrl + '/content/' + content_id).then(function (response) {
       return response.data;
     });
   },
   render: function render(content_id) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/content/' + content_id + '/render').then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get(window.contentEditorBaseUrl + '/content/' + content_id + '/render').then(function (response) {
       return response.data;
     });
   },
   store: function store(content_id, data) {
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/content/' + content_id + '/store', data).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.contentEditorBaseUrl + '/content/' + content_id + '/store', data).then(function (response) {
       return response.data;
     });
   },
   addComponent: function addComponent(content_id, componentClass) {
     var data = new FormData();
     data.append('componentClass', componentClass);
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/content/' + content_id + '/addComponent', data).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.contentEditorBaseUrl + '/content/' + content_id + '/addComponent', data).then(function (response) {
       return response.data;
     });
   }
@@ -12344,7 +12346,7 @@ __webpack_require__.r(__webpack_exports__);
     var data = {
       componentId: componentId
     };
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/uploader/files', data).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.contentEditorBaseUrl + '/uploader/files', data).then(function (response) {
       return response.data;
     });
   },
@@ -12353,7 +12355,7 @@ __webpack_require__.r(__webpack_exports__);
       componentId: componentId,
       fileId: fileId
     };
-    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/uploader/remove', data).then(function (response) {
+    return axios__WEBPACK_IMPORTED_MODULE_0___default.a.post(window.contentEditorBaseUrl + '/uploader/remove', data).then(function (response) {
       return response.data;
     });
   }
