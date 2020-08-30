@@ -34,6 +34,7 @@ class Section extends Model implements Sortable
     public function render()
     {
         $v[ 'content' ] = "";
+        $v[ 'section' ] = $this;
 
         foreach( $this->components as $component )
         {

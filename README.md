@@ -45,6 +45,11 @@ You can publish the config file with:
 php artisan vendor:publish --provider="WEBerlei\ContentEditorLaravel\ContentEditorServiceProvider" --tag="config"
 ```
 
+You can publish the vue components with:
+```bash
+php artisan vendor:publish --provider="WEBerlei\ContentEditorLaravel\ContentEditorServiceProvider" --tag="vue-components"
+```
+
 This is the contents of the published config file:
 
 ```php
