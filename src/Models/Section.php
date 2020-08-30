@@ -82,6 +82,7 @@ class Section extends Model implements Sortable
             $component = new Component();
             $component->save();
 
+            $renderable->initialize();
             $renderable->save();
 
             $component->setContentComponent($renderable);

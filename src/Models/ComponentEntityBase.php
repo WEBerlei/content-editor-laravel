@@ -24,22 +24,42 @@ class ComponentEntityBase extends ComponentBase
             c0.361,0,0.654,0.292,0.654,0.654V6.886z"></path>
     </svg>';
     protected static $field = 'entity_id';
+    protected static $selectNameField = 'created_at';
+    protected static $entity = Content::class;
 
     public function __construct(array $attributes = [])
     {
         $this->setTable( config( 'content-editor.table_prefix' ) . "component_entities" );
     }
 
+    public function initialize()
+    {
+        $entities = $this->getAvailableEntities();
+
+        if( count( $entities ) > 0 )
+        {
+            $this->{static::$field} = array_key_first( $entities );
+        }
+    }
+
     protected function doRender()
     {
-        return $this->entity_id;
+        $v[ 'entity' ] = (static::$entity)::where( 'id', '=', $this->entity_id )->first();
+
+        return view( 'content-editor::output.entity', $v )->render();
     }
 
     protected function doRenderEditor()
     {
         $v = $this->getEditorVariables();
+        $v[ 'entities' ] = $this->getAvailableEntities();
 
         return view( 'content-editor::editors.entity', $v )->render();
+    }
+
+    protected function getAvailableEntities()
+    {
+        return (static::$entity)::all()->pluck( static::$selectNameField, 'id' )->toArray();
     }
 
     public function getComponentPreview()

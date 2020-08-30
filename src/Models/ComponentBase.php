@@ -17,6 +17,11 @@ abstract class ComponentBase extends Model
         return $this->morphOne(Component::class, 'renderable');
     }
 
+    public function initialize()
+    {
+
+    }
+
     public function loadVueData()
     {
         $this->vue_id = $this->component->id;
@@ -63,6 +68,11 @@ abstract class ComponentBase extends Model
     protected function getFieldName()
     {
         return 'data_' . static::$field . '_' . $this->component->id;
+    }
+
+    public function getName()
+    {
+        return static::$name;
     }
 
     protected function getEditorVariables()

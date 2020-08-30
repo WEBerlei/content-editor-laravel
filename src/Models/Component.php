@@ -89,4 +89,14 @@ class Component extends Model implements Sortable
     {
         return static::query()->where('section_id', $this->section_id);
     }
+
+    public function delete()
+    {
+        if( $this->renderable != null )
+        {
+            $this->renderable->delete();
+        }
+
+        return parent::delete();
+    }
 }

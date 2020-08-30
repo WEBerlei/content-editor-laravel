@@ -50,6 +50,11 @@ You can publish the vue components with:
 php artisan vendor:publish --provider="WEBerlei\ContentEditorLaravel\ContentEditorServiceProvider" --tag="vue-components"
 ```
 
+You can publish the views with:
+```bash
+php artisan vendor:publish --provider="WEBerlei\ContentEditorLaravel\ContentEditorServiceProvider" --tag="views"
+```
+
 This is the contents of the published config file:
 
 ```php
