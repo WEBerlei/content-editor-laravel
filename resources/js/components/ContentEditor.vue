@@ -1,9 +1,9 @@
 <template>
     <div class="content-editor-main">
         <input type="hidden" name="content_id" :value="contentId" />
-        <div class="overflow-hidden mx-2">
-            <div class="py-5">
-               <span class="relative my-2 z-0 inline-flex shadow-sm rounded-md">
+        <div class="content-editor-main-container">
+            <div class="ce-py-5">
+               <span class="toolbar">
                   <a @click.prevent="showData" href="#"
                      class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
                      v-bind:class="{'bg-primary-400':this.currentMode == 'data', 'text-primary-800':this.currentMode == 'data'}"
@@ -27,7 +27,7 @@
                   </a>
                 </span>
             </div>
-            <div class="py-5">
+            <div class="ce-py-5">
                 <layout-view :content="content" :components="components" v-if="!loading && currentMode === 'layout'"></layout-view>
                 <preview-view :content="content" v-if="!loading && currentMode === 'preview'"></preview-view>
                 <data-view ref="dataView" :content="content" :components="components" v-if="!loading && currentMode === 'data'"></data-view>
@@ -103,7 +103,9 @@
                 }
             },
             saveChangesToEditors() {
-                this.$refs.dataView.saveEditors();
+                if( this.currentMode == "data" ) {
+                    this.$refs.dataView.saveEditors();
+                }
             },
             save: function() {
                 if( this.saving === true )  {
@@ -222,6 +224,12 @@
 
     }
 
+    .content-editor-main-container {
+        overflow: hidden;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
     .content-editor-views {
 
     }
@@ -244,5 +252,20 @@
 
     .trix-button--icon-heading-1::before {
         background-image: url( '/images/heading.svg' ) !important;
+    }
+
+    .ce-py-5 {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    span.toolbar {
+        z-index: 0;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        position: relative;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        display: inline-flex;
+        border-radius: 0.375rem;
     }
 </style>

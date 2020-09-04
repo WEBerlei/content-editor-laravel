@@ -2099,7 +2099,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     saveChangesToEditors: function saveChangesToEditors() {
-      this.$refs.dataView.saveEditors();
+      if (this.currentMode == "data") {
+        this.$refs.dataView.saveEditors();
+      }
     },
     save: function save() {
       var _this2 = this;
@@ -2874,7 +2876,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".content-editor-main {\n}\n.content-editor-views {\n}\n.content-editor-button {\n  color: #fff;\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  flex-grow: 1;\n  font-family: sans-serif;\n  display: inline-block;\n  text-decoration: none;\n}\n.trix-button-group--file-tools {\n  display: none !important;\n}\n.trix-button--icon-heading-1::before {\n  background-image: url( '/images/heading.svg' ) !important;\n}\n", ""]);
+exports.push([module.i, ".content-editor-main {\n}\n.content-editor-main-container {\n  overflow: hidden;\n  margin-left: 0.5rem;\n  margin-right: 0.5rem;\n}\n.content-editor-views {\n}\n.content-editor-button {\n  color: #fff;\n  padding: 15px;\n  margin: 1em;\n  border-radius: 0.25em;\n  text-align: center;\n  flex-grow: 1;\n  font-family: sans-serif;\n  display: inline-block;\n  text-decoration: none;\n}\n.trix-button-group--file-tools {\n  display: none !important;\n}\n.trix-button--icon-heading-1::before {\n  background-image: url( '/images/heading.svg' ) !important;\n}\n.ce-py-5 {\n  padding-top: 1.25rem;\n  padding-bottom: 1.25rem;\n}\nspan.toolbar {\n  z-index: 0;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);\n  position: relative;\n  margin-top: 0.5rem;\n  margin-bottom: 0.5rem;\n  display: inline-flex;\n  border-radius: 0.375rem;\n}\n", ""]);
 
 // exports
 
@@ -8168,136 +8170,132 @@ var render = function() {
       domProps: { value: _vm.contentId }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "overflow-hidden mx-2" }, [
-      _c("div", { staticClass: "py-5" }, [
-        _c(
-          "span",
-          { staticClass: "relative my-2 z-0 inline-flex shadow-sm rounded-md" },
-          [
-            _c(
-              "a",
-              {
-                staticClass:
-                  "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
-                class: {
-                  "bg-primary-400": this.currentMode == "data",
-                  "text-primary-800": this.currentMode == "data"
-                },
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showData($event)
-                  }
-                }
+    _c("div", { staticClass: "content-editor-main-container" }, [
+      _c("div", { staticClass: "ce-py-5" }, [
+        _c("span", { staticClass: "toolbar" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+              class: {
+                "bg-primary-400": this.currentMode == "data",
+                "text-primary-800": this.currentMode == "data"
               },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "h-5 w-5 mr-2",
-                    attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        "fill-rule": "evenodd",
-                        d:
-                          "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
-                        "clip-rule": "evenodd"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v("\n                  Data\n              ")
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
-                class: {
-                  "bg-primary-400": this.currentMode == "layout",
-                  "text-primary-800": this.currentMode == "layout"
-                },
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showLayout($event)
-                  }
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.showData($event)
                 }
-              },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "h-5 w-5 mr-2",
-                    attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
-                  },
-                  [
-                    _c("path", {
-                      attrs: {
-                        d:
-                          "M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v("\n                  Layout\n              ")
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass:
-                  "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
-                class: {
-                  "bg-primary-400": this.currentMode == "preview",
-                  "text-primary-800": this.currentMode == "preview"
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "h-5 w-5 mr-2",
+                  attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
                 },
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showPreview($event)
-                  }
-                }
+                [
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d:
+                        "M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z",
+                      "clip-rule": "evenodd"
+                    }
+                  })
+                ]
+              ),
+              _vm._v("\n                  Data\n              ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+              class: {
+                "bg-primary-400": this.currentMode == "layout",
+                "text-primary-800": this.currentMode == "layout"
               },
-              [
-                _c(
-                  "svg",
-                  {
-                    staticClass: "h-5 w-5 mr-2",
-                    attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
-                  },
-                  [
-                    _c("path", {
-                      attrs: { d: "M10 12a2 2 0 100-4 2 2 0 000 4z" }
-                    }),
-                    _c("path", {
-                      attrs: {
-                        "fill-rule": "evenodd",
-                        d:
-                          "M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z",
-                        "clip-rule": "evenodd"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v("\n                  Preview\n              ")
-              ]
-            )
-          ]
-        )
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.showLayout($event)
+                }
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "h-5 w-5 mr-2",
+                  attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+                    }
+                  })
+                ]
+              ),
+              _vm._v("\n                  Layout\n              ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass:
+                "-ml-px relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-primary-700 focus:z-10 focus:outline-none focus:border-primary-300 focus:shadow-outline-orange active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150",
+              class: {
+                "bg-primary-400": this.currentMode == "preview",
+                "text-primary-800": this.currentMode == "preview"
+              },
+              attrs: { href: "#" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.showPreview($event)
+                }
+              }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticClass: "h-5 w-5 mr-2",
+                  attrs: { fill: "currentColor", viewBox: "0 0 20 20" }
+                },
+                [
+                  _c("path", {
+                    attrs: { d: "M10 12a2 2 0 100-4 2 2 0 000 4z" }
+                  }),
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d:
+                        "M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z",
+                      "clip-rule": "evenodd"
+                    }
+                  })
+                ]
+              ),
+              _vm._v("\n                  Preview\n              ")
+            ]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "py-5" },
+        { staticClass: "ce-py-5" },
         [
           !_vm.loading && _vm.currentMode === "layout"
             ? _c("layout-view", {
@@ -12399,4 +12397,4 @@ module.exports = __webpack_require__(/*! C:\xampp\htdocs\content-editor-laravel\
 
 /***/ })
 
-},[[0,"/js/manifest","/js/vendor"]]]);
+},[[0,"/js/manifest"]]]);

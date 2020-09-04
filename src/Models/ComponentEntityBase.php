@@ -24,7 +24,7 @@ class ComponentEntityBase extends ComponentBase
             c0.361,0,0.654,0.292,0.654,0.654V6.886z"></path>
     </svg>';
     protected static $field = 'entity_id';
-    protected static $selectNameField = 'created_at';
+    protected static $selectNameField = 'id';
     protected static $entity = Content::class;
 
     public function __construct(array $attributes = [])
@@ -69,6 +69,8 @@ class ComponentEntityBase extends ComponentBase
             return static::$name;
         }
 
-        return static::$name . ": " . $this->entity_id;
+        $entity = (static::$entity)::where( 'id', '=', $this->entity_id )->first();
+
+        return static::$name . ": " . $entity->{static::$field};
     }
 }
